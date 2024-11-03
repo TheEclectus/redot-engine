@@ -2,8 +2,8 @@
 /*  test_main.cpp                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -67,6 +67,7 @@
 #include "tests/core/math/test_geometry_3d.h"
 #include "tests/core/math/test_math_funcs.h"
 #include "tests/core/math/test_plane.h"
+#include "tests/core/math/test_projection.h"
 #include "tests/core/math/test_quaternion.h"
 #include "tests/core/math/test_random_number_generator.h"
 #include "tests/core/math/test_rect2.h"
@@ -88,6 +89,7 @@
 #include "tests/core/string/test_string.h"
 #include "tests/core/string/test_translation.h"
 #include "tests/core/string/test_translation_server.h"
+#include "tests/core/templates/test_a_hash_map.h"
 #include "tests/core/templates/test_command_queue.h"
 #include "tests/core/templates/test_hash_map.h"
 #include "tests/core/templates/test_hash_set.h"

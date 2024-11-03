@@ -2,8 +2,8 @@
 /*  variant.cpp                                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1738,7 +1738,7 @@ String Variant::stringify(int recursion_count) const {
 		case INT:
 			return itos(_data._int);
 		case FLOAT:
-			return rtos(_data._float);
+			return String::num_real(_data._float, true);
 		case STRING:
 			return *reinterpret_cast<const String *>(_data._mem);
 		case VECTOR2:

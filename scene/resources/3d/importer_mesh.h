@@ -2,8 +2,8 @@
 /*  importer_mesh.h                                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -70,9 +70,6 @@ class ImporterMesh : public Resource {
 				return l.distance < r.distance;
 			}
 		};
-
-		void split_normals(const LocalVector<int> &p_indices, const LocalVector<Vector3> &p_normals);
-		static void _split_normals(Array &r_arrays, const LocalVector<int> &p_indices, const LocalVector<Vector3> &p_normals);
 	};
 	Vector<Surface> surfaces;
 	Vector<String> blend_shapes;
@@ -120,7 +117,7 @@ public:
 
 	void optimize_indices_for_cache();
 
-	void generate_lods(float p_normal_merge_angle, float p_normal_split_angle, Array p_skin_pose_transform_array, bool p_raycast_normals = false);
+	void generate_lods(float p_normal_merge_angle, Array p_skin_pose_transform_array);
 
 	void create_shadow_mesh();
 	Ref<ImporterMesh> get_shadow_mesh() const;

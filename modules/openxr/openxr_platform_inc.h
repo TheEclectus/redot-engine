@@ -2,8 +2,8 @@
 /*  openxr_platform_inc.h                                                 */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -51,6 +51,13 @@
 #else
 #define XR_USE_GRAPHICS_API_OPENGL
 #endif // ANDROID_ENABLED
+#if defined(LINUXBSD_ENABLED) && defined(EGL_ENABLED)
+#ifdef GLAD_ENABLED
+#include "thirdparty/glad/glad/egl.h"
+#else
+#include <EGL/egl.h>
+#endif // GLAD_ENABLED
+#endif // defined(LINUXBSD_ENABLED) && defined(EGL_ENABLED)
 #ifdef X11_ENABLED
 #define GL_GLEXT_PROTOTYPES 1
 #define GL3_PROTOTYPES 1

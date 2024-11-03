@@ -2,8 +2,8 @@
 /*  navigation_obstacle_3d.h                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -97,7 +97,7 @@ public:
 	real_t get_height() const { return height; }
 
 	void set_vertices(const Vector<Vector3> &p_vertices);
-	const Vector<Vector3> &get_vertices() const { return vertices; };
+	const Vector<Vector3> &get_vertices() const { return vertices; }
 
 	void set_avoidance_layers(uint32_t p_layers);
 	uint32_t get_avoidance_layers() const;
@@ -109,7 +109,7 @@ public:
 	bool get_use_3d_avoidance() const { return use_3d_avoidance; }
 
 	void set_velocity(const Vector3 p_velocity);
-	Vector3 get_velocity() const { return velocity; };
+	Vector3 get_velocity() const { return velocity; }
 
 	void _avoidance_done(Vector3 p_new_velocity); // Dummy
 

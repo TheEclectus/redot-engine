@@ -2,8 +2,8 @@
 /*  input_event_editor_plugin.cpp                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -39,7 +39,7 @@ void InputEventConfigContainer::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_ENTER_TREE:
 		case NOTIFICATION_THEME_CHANGED: {
-			open_config_button->set_icon(get_editor_theme_icon(SNAME("Edit")));
+			open_config_button->set_button_icon(get_editor_theme_icon(SNAME("Edit")));
 		} break;
 	}
 }

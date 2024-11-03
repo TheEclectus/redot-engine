@@ -73,6 +73,7 @@
 			<description>
 				Called during the physics processing step of the main loop. Physics processing means that the frame rate is synced to the physics, i.e. the [param delta] variable should be constant. [param delta] is in seconds.
 				It is only called if physics processing is enabled, which is done automatically if this method is overridden, and can be toggled with [method set_physics_process].
+				Processing happens in order of [member process_physics_priority], lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).
 				Corresponds to the [constant NOTIFICATION_PHYSICS_PROCESS] notification in [method Object._notification].
 				[b]Note:[/b] This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
 			</description>
@@ -83,6 +84,7 @@
 			<description>
 				Called during the processing step of the main loop. Processing happens at every frame and as fast as possible, so the [param delta] time since the previous frame is not constant. [param delta] is in seconds.
 				It is only called if processing is enabled, which is done automatically if this method is overridden, and can be toggled with [method set_process].
+				Processing happens in order of [member process_priority], lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).
 				Corresponds to the [constant NOTIFICATION_PROCESS] notification in [method Object._notification].
 				[b]Note:[/b] This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
 			</description>
@@ -127,6 +129,17 @@
 				To consume the input event and stop it propagating further to other nodes, [method Viewport.set_input_as_handled] can be called.
 				This method can be used to handle Unicode character input with [kbd]Alt[/kbd], [kbd]Alt + Ctrl[/kbd], and [kbd]Alt + Shift[/kbd] modifiers, after shortcuts were handled.
 				For gameplay input, this and [method _unhandled_input] are usually a better fit than [method _input], as GUI events should be handled first. This method also performs better than [method _unhandled_input], since unrelated events such as [InputEventMouseMotion] are automatically filtered. For shortcuts, consider using [method _shortcut_input] instead.
+				[b]Note:[/b] This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
+			</description>
+		</method>
+		<method name="_unhandled_picking_input" qualifiers="virtual">
+			<return type="void" />
+			<param index="0" name="event" type="InputEvent" />
+			<description>
+				Called when an [InputEventKey] hasn't been consumed by physics picking. The input event propagates up through the node tree in the current [Viewport] until a node consumes it.
+				It is only called if unhandled picking input processing is enabled, which is done automatically if this method is overridden, and can be toggled with [method set_process_unhandled_picking_input].
+				To consume the input event and stop it propagating further to other nodes, [method Viewport.set_input_as_handled] can be called.
+				This method can be used to handle mouse and touch events that were not set to handled during physics picking.
 				[b]Note:[/b] This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
 			</description>
 		</method>
@@ -694,6 +707,12 @@
 				Returns [code]true[/code] if the node is processing unhandled key input (see [method set_process_unhandled_key_input]).
 			</description>
 		</method>
+		<method name="is_processing_unhandled_picking_input" qualifiers="const">
+			<return type="bool" />
+			<description>
+				Returns [code]true[/code] if the node is processing unhandled physics input (see [method set_process_unhandled_picking_input]).
+			</description>
+		</method>
 		<method name="move_child">
 			<return type="void" />
 			<param index="0" name="child_node" type="Node" />
@@ -958,6 +977,13 @@
 				[b]Note:[/b] If [method _unhandled_key_input] is overridden, this will be automatically enabled before [method _ready] is called.
 			</description>
 		</method>
+		<method name="set_process_unhandled_picking_input">
+			<return type="void" />
+			<param index="0" name="enable" type="bool" />
+			<description>
+				Enables unhandled picking input processing. Enabled automatically if [method _unhandled_picking_input] is overridden. Any calls to this before [method _ready] will be ignored.
+			</description>
+		</method>
 		<method name="set_scene_instance_load_placeholder">
 			<return type="void" />
 			<param index="0" name="load_placeholder" type="bool" />
@@ -1015,10 +1041,10 @@
 			The node's processing behavior (see [enum ProcessMode]). To check if the node can process in its current mode, use [method can_process].
 		</member>
 		<member name="process_physics_priority" type="int" setter="set_physics_process_priority" getter="get_physics_process_priority" default="0">
-			Similar to [member process_priority] but for [constant NOTIFICATION_PHYSICS_PROCESS], [method _physics_process] or the internal version.
+			Similar to [member process_priority] but for [constant NOTIFICATION_PHYSICS_PROCESS], [method _physics_process], or [constant NOTIFICATION_INTERNAL_PHYSICS_PROCESS].
 		</member>
 		<member name="process_priority" type="int" setter="set_process_priority" getter="get_process_priority" default="0">
-			The node's execution order of the process callbacks ([method _process], [method _physics_process], and internal processing). Nodes whose priority value is [i]lower[/i] call their process callbacks first, regardless of tree order.
+			The node's execution order of the process callbacks ([method _process], [constant NOTIFICATION_PROCESS], and [constant NOTIFICATION_INTERNAL_PROCESS]). Nodes whose priority value is [i]lower[/i] call their process callbacks first, regardless of tree order.
 		</member>
 		<member name="process_thread_group" type="int" setter="set_process_thread_group" getter="get_process_thread_group" enum="Node.ProcessThreadGroup" default="0">
 			Set the process thread group for this node (basically, whether it receives [constant NOTIFICATION_PROCESS], [constant NOTIFICATION_PHYSICS_PROCESS], [method _process] or [method _physics_process] (and the internal versions) on the main thread or in a sub-thread.

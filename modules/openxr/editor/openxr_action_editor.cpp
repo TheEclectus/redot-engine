@@ -2,8 +2,8 @@
 /*  openxr_action_editor.cpp                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -43,7 +43,7 @@ void OpenXRActionEditor::_bind_methods() {
 }
 
 void OpenXRActionEditor::_theme_changed() {
-	rem_action->set_icon(get_theme_icon(SNAME("Remove"), EditorStringName(EditorIcons)));
+	rem_action->set_button_icon(get_theme_icon(SNAME("Remove"), EditorStringName(EditorIcons)));
 }
 
 void OpenXRActionEditor::_notification(int p_what) {

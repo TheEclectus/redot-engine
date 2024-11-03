@@ -2,8 +2,8 @@
 /*  editor_theme_manager.h                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -137,6 +137,7 @@ class EditorThemeManager {
 		Ref<StyleBoxFlat> button_style_hover;
 
 		Ref<StyleBoxFlat> popup_style;
+		Ref<StyleBoxFlat> popup_border_style;
 		Ref<StyleBoxFlat> window_style;
 		Ref<StyleBoxFlat> dialog_style;
 		Ref<StyleBoxFlat> panel_container_style;

@@ -2,8 +2,8 @@
 /*  egl_manager.h                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -115,6 +115,8 @@ public:
 	bool is_using_vsync() const;
 
 	EGLContext get_context(DisplayServer::WindowID p_window_id);
+	EGLDisplay get_display(DisplayServer::WindowID p_window_id);
+	EGLConfig get_config(DisplayServer::WindowID p_window_id);
 
 	Error initialize(void *p_native_display = nullptr);
 

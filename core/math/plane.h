@@ -2,8 +2,8 @@
 /*  plane.h                                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -42,7 +42,7 @@ struct [[nodiscard]] Plane {
 	real_t d = 0;
 
 	void set_normal(const Vector3 &p_normal);
-	_FORCE_INLINE_ Vector3 get_normal() const { return normal; };
+	_FORCE_INLINE_ Vector3 get_normal() const { return normal; }
 
 	void normalize();
 	Plane normalized() const;

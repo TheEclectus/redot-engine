@@ -2,8 +2,8 @@
 /*  project_export.h                                                      */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -218,7 +218,7 @@ public:
 
 	Ref<EditorExportPreset> get_current_preset() const;
 
-	bool is_exporting() const { return exporting; };
+	bool is_exporting() const { return exporting; }
 
 	ProjectExportDialog();
 	~ProjectExportDialog();

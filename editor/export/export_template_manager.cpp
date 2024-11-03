@@ -2,8 +2,8 @@
 /*  export_template_manager.cpp                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -891,7 +891,7 @@ void ExportTemplateManager::_notification(int p_what) {
 			current_missing_label->add_theme_color_override(SceneStringName(font_color), get_theme_color(SNAME("error_color"), EditorStringName(Editor)));
 			current_installed_label->add_theme_color_override(SceneStringName(font_color), get_theme_color(SNAME("font_disabled_color"), EditorStringName(Editor)));
 
-			mirror_options_button->set_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
+			mirror_options_button->set_button_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
 		} break;
 
 		case NOTIFICATION_VISIBILITY_CHANGED: {

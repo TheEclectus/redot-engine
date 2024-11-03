@@ -2,8 +2,8 @@
 /*  test_variant.h                                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1806,6 +1806,14 @@ TEST_CASE("[Variant] Writer and parser dictionary") {
 	VariantParser::parse(&ss, d_parsed, errs, line);
 
 	CHECK_MESSAGE(d_parsed == Variant(d), "Should parse back.");
+}
+
+TEST_CASE("[Variant] Writer key sorting") {
+	Dictionary d = build_dictionary(StringName("C"), 3, "A", 1, StringName("B"), 2, "D", 4);
+	String d_str;
+	VariantWriter::write_to_string(d, d_str);
+
+	CHECK_EQ(d_str, "{\n\"A\": 1,\n&\"B\": 2,\n&\"C\": 3,\n\"D\": 4\n}");
 }
 
 TEST_CASE("[Variant] Writer recursive dictionary") {

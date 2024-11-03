@@ -2,8 +2,8 @@
 /*  rendering_device_driver_metal.mm                                      */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -2062,6 +2062,10 @@ Vector<uint8_t> RenderingDeviceDriverMetal::shader_compile_binary_from_spirv(Vec
 
 					case BT::Sampler: {
 						primary.dataType = MTLDataTypeSampler;
+						primary.arrayLength = 1;
+						for (uint32_t const &a : a_type.array) {
+							primary.arrayLength *= a;
+						}
 					} break;
 
 					default: {
@@ -2069,7 +2073,7 @@ Vector<uint8_t> RenderingDeviceDriverMetal::shader_compile_binary_from_spirv(Vec
 					} break;
 				}
 
-				// Find array length.
+				// Find array length of image.
 				if (basetype == BT::Image || basetype == BT::SampledImage) {
 					primary.arrayLength = 1;
 					for (uint32_t const &a : a_type.array) {

@@ -2,8 +2,8 @@
 /*  ip.cpp                                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -53,7 +53,7 @@ struct _IP_ResolverPrivate {
 			response.clear();
 			type = IP::TYPE_NONE;
 			hostname = "";
-		};
+		}
 
 		QueueItem() {
 			clear();
@@ -203,7 +203,7 @@ IPAddress IP::get_resolve_item_address(ResolverID p_id) const {
 	MutexLock lock(resolver->mutex);
 
 	if (resolver->queue[p_id].status.get() != IP::RESOLVER_STATUS_DONE) {
-		ERR_PRINT("Resolve of '" + resolver->queue[p_id].hostname + "'' didn't complete yet.");
+		ERR_PRINT(vformat("Resolve of '%s' didn't complete yet.", resolver->queue[p_id].hostname));
 		return IPAddress();
 	}
 
@@ -222,7 +222,7 @@ Array IP::get_resolve_item_addresses(ResolverID p_id) const {
 	MutexLock lock(resolver->mutex);
 
 	if (resolver->queue[p_id].status.get() != IP::RESOLVER_STATUS_DONE) {
-		ERR_PRINT("Resolve of '" + resolver->queue[p_id].hostname + "'' didn't complete yet.");
+		ERR_PRINT(vformat("Resolve of '%s' didn't complete yet.", resolver->queue[p_id].hostname));
 		return Array();
 	}
 

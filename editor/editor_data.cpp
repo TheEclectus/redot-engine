@@ -2,8 +2,8 @@
 /*  editor_data.cpp                                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -549,6 +549,7 @@ Variant EditorData::instantiate_custom_type(const String &p_type, const String &
 				if (n) {
 					n->set_name(p_type);
 				}
+				n->set_meta(SceneStringName(_custom_type_script), script);
 				((Object *)ob)->set_script(script);
 				return ob;
 			}
@@ -1010,6 +1011,7 @@ Variant EditorData::script_class_instance(const String &p_class) {
 			// Store in a variant to initialize the refcount if needed.
 			Variant obj = ClassDB::instantiate(script->get_instance_base_type());
 			if (obj) {
+				Object::cast_to<Object>(obj)->set_meta(SceneStringName(_custom_type_script), script);
 				obj.operator Object *()->set_script(script);
 			}
 			return obj;

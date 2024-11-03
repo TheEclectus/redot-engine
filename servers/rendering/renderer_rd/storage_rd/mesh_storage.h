@@ -2,8 +2,8 @@
 /*  mesh_storage.h                                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -353,7 +353,7 @@ public:
 
 	/* MESH API */
 
-	bool owns_mesh(RID p_rid) { return mesh_owner.owns(p_rid); };
+	bool owns_mesh(RID p_rid) { return mesh_owner.owns(p_rid); }
 
 	virtual RID mesh_allocate() override;
 	virtual void mesh_initialize(RID p_mesh) override;
@@ -618,7 +618,7 @@ public:
 
 	/* MESH INSTANCE API */
 
-	bool owns_mesh_instance(RID p_rid) const { return mesh_instance_owner.owns(p_rid); };
+	bool owns_mesh_instance(RID p_rid) const { return mesh_instance_owner.owns(p_rid); }
 
 	virtual RID mesh_instance_create(RID p_base) override;
 	virtual void mesh_instance_free(RID p_rid) override;
@@ -630,7 +630,7 @@ public:
 
 	/* MULTIMESH API */
 
-	bool owns_multimesh(RID p_rid) { return multimesh_owner.owns(p_rid); };
+	bool owns_multimesh(RID p_rid) { return multimesh_owner.owns(p_rid); }
 
 	virtual RID _multimesh_allocate() override;
 	virtual void _multimesh_initialize(RID p_multimesh) override;
@@ -739,7 +739,7 @@ public:
 
 	/* SKELETON API */
 
-	bool owns_skeleton(RID p_rid) const { return skeleton_owner.owns(p_rid); };
+	bool owns_skeleton(RID p_rid) const { return skeleton_owner.owns(p_rid); }
 
 	virtual RID skeleton_allocate() override;
 	virtual void skeleton_initialize(RID p_skeleton) override;

@@ -2,8 +2,8 @@
 /*  lightmap_gi.h                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -45,8 +45,12 @@ class LightmapGIData : public Resource {
 	GDCLASS(LightmapGIData, Resource);
 	RES_BASE_EXTENSION("lmbake")
 
-	Ref<TextureLayered> light_texture;
-	TypedArray<TextureLayered> light_textures;
+	// The 'merged' texture atlases actually used by the renderer.
+	Ref<TextureLayered> combined_light_texture;
+
+	// The temporary texture atlas arrays which are used for storage.
+	// If a single atlas is too large, it's split and recombined during loading.
+	TypedArray<TextureLayered> storage_light_textures;
 
 	bool uses_spherical_harmonics = false;
 	bool interior = false;
@@ -246,6 +250,8 @@ private:
 
 	void _plot_triangle_into_octree(GenProbesOctree *p_cell, float p_cell_size, const Vector3 *p_triangle);
 	void _gen_new_positions_from_octree(const GenProbesOctree *p_cell, float p_cell_size, const Vector<Vector3> &probe_positions, LocalVector<Vector3> &new_probe_positions, HashMap<Vector3i, bool> &positions_used, const AABB &p_bounds);
+
+	BakeError _save_and_reimport_atlas_textures(const Ref<Lightmapper> p_lightmapper, const String &p_base_name, TypedArray<TextureLayered> &r_textures, bool p_compress = false) const;
 
 protected:
 	void _validate_property(PropertyInfo &p_property) const;

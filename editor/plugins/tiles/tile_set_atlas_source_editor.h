@@ -2,8 +2,8 @@
 /*  tile_set_atlas_source_editor.h                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -84,7 +84,7 @@ public:
 		int get_id() const;
 
 		void edit(Ref<TileSet> p_tile_set, Ref<TileSetAtlasSource> p_tile_set_atlas_source, int p_source_id);
-		Ref<TileSetAtlasSource> get_edited() { return tile_set_atlas_source; };
+		Ref<TileSetAtlasSource> get_edited() { return tile_set_atlas_source; }
 	};
 
 	// -- Proxy object for a tile, needed by the inspector --
@@ -105,8 +105,8 @@ public:
 		static void _bind_methods();
 
 	public:
-		Ref<TileSetAtlasSource> get_edited_tile_set_atlas_source() const { return tile_set_atlas_source; };
-		RBSet<TileSelection> get_edited_tiles() const { return tiles; };
+		Ref<TileSetAtlasSource> get_edited_tile_set_atlas_source() const { return tile_set_atlas_source; }
+		RBSet<TileSelection> get_edited_tiles() const { return tiles; }
 
 		// Update the proxyed object.
 		void edit(Ref<TileSetAtlasSource> p_tile_set_atlas_source, const RBSet<TileSelection> &p_tiles = RBSet<TileSelection>());

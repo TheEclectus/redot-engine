@@ -2,8 +2,8 @@
 /*  resource_loader.h                                                     */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -224,7 +224,7 @@ public:
 	static ThreadLoadStatus load_threaded_get_status(const String &p_path, float *r_progress = nullptr);
 	static Ref<Resource> load_threaded_get(const String &p_path, Error *r_error = nullptr);
 
-	static bool is_within_load() { return load_nesting > 0; };
+	static bool is_within_load() { return load_nesting > 0; }
 
 	static void resource_changed_connect(Resource *p_source, const Callable &p_callable, uint32_t p_flags);
 	static void resource_changed_disconnect(Resource *p_source, const Callable &p_callable);

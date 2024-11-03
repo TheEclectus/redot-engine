@@ -2,8 +2,8 @@
 /*  render_scene_buffers.cpp                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -83,7 +83,7 @@ void RenderSceneBuffersExtension::_bind_methods() {
 
 void RenderSceneBuffersExtension::configure(const RenderSceneBuffersConfiguration *p_config) {
 	GDVIRTUAL_CALL(_configure, p_config);
-};
+}
 
 void RenderSceneBuffersExtension::set_fsr_sharpness(float p_fsr_sharpness) {
 	GDVIRTUAL_CALL(_set_fsr_sharpness, p_fsr_sharpness);

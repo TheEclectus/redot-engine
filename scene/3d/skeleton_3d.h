@@ -2,8 +2,8 @@
 /*  skeleton_3d.h                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -33,6 +33,7 @@
 #ifndef SKELETON_3D_H
 #define SKELETON_3D_H
 
+#include "core/templates/a_hash_map.h"
 #include "scene/3d/node_3d.h"
 #include "scene/resources/3d/skin.h"
 
@@ -161,7 +162,7 @@ private:
 	bool process_order_dirty = false;
 
 	Vector<int> parentless_bones;
-	HashMap<String, int> name_to_bone_index;
+	AHashMap<String, int> name_to_bone_index;
 
 	mutable StringName concatenated_bone_names = StringName();
 	void _update_bone_names() const;

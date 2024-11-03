@@ -2,8 +2,8 @@
 /*  editor_feature_profile.h                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -57,6 +57,7 @@ public:
 		FEATURE_FILESYSTEM_DOCK,
 		FEATURE_IMPORT_DOCK,
 		FEATURE_HISTORY_DOCK,
+		FEATURE_GAME,
 		FEATURE_MAX
 	};
 

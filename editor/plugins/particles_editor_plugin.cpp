@@ -2,8 +2,8 @@
 /*  particles_editor_plugin.cpp                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -62,7 +62,7 @@ void ParticlesEditorPlugin::_notification(int p_what) {
 				DEV_ASSERT(false);
 			}
 
-			menu->set_icon(menu->get_editor_theme_icon(handled_type));
+			menu->set_button_icon(menu->get_editor_theme_icon(handled_type));
 			menu->set_text(handled_type);
 
 			PopupMenu *popup = menu->get_popup();

@@ -2,8 +2,8 @@
 /*  scene_tree_dock.h                                                     */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -117,6 +117,7 @@ class SceneTreeDock : public VBoxContainer {
 	Button *button_instance = nullptr;
 	Button *button_create_script = nullptr;
 	Button *button_detach_script = nullptr;
+	Button *button_extend_script = nullptr;
 	MenuButton *button_tree_menu = nullptr;
 
 	Button *node_shortcuts_toggle = nullptr;

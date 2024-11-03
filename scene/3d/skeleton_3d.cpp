@@ -2,8 +2,8 @@
 /*  skeleton_3d.cpp                                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -328,6 +328,8 @@ void Skeleton3D::_notification(int p_what) {
 #ifndef DISABLE_DEPRECATED
 			setup_simulator();
 #endif // _DISABLE_DEPRECATED
+			update_flags = UPDATE_FLAG_POSE;
+			_notification(NOTIFICATION_UPDATE_SKELETON);
 		} break;
 		case NOTIFICATION_UPDATE_SKELETON: {
 			// Update bone transforms to apply unprocessed poses.

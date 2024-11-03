@@ -2,8 +2,8 @@
 /*  export_plugin.h                                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -61,7 +61,7 @@ class EditorExportPlatformWindows : public EditorExportPlatformPC {
 			ssh_args = p_ssh_arg;
 			cmd_args = p_cmd_args;
 			wait = p_wait;
-		};
+		}
 	};
 
 	Ref<ImageTexture> run_icon;

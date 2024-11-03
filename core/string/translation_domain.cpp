@@ -2,8 +2,8 @@
 /*  translation_domain.cpp                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -125,7 +125,7 @@ String TranslationDomain::_double_vowels(const String &p_message) const {
 		}
 	}
 	return res;
-};
+}
 
 String TranslationDomain::_replace_with_accented_string(const String &p_message) const {
 	String res;
@@ -391,6 +391,10 @@ void TranslationDomain::set_pseudolocalization_suffix(const String &p_suffix) {
 }
 
 StringName TranslationDomain::pseudolocalize(const StringName &p_message) const {
+	if (p_message.is_empty()) {
+		return p_message;
+	}
+
 	String message = p_message;
 	int length = message.length();
 	if (pseudolocalization.override_enabled) {

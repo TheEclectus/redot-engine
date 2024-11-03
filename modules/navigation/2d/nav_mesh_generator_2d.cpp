@@ -2,8 +2,8 @@
 /*  nav_mesh_generator_2d.cpp                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -757,7 +757,7 @@ void NavMeshGenerator2D::generator_parse_source_geometry_data(Ref<NavigationPoly
 	for (Node *E : parse_nodes) {
 		generator_parse_geometry_node(p_navigation_mesh, p_source_geometry_data, E, recurse_children);
 	}
-};
+}
 
 static void generator_recursive_process_polytree_items(List<TPPLPoly> &p_tppl_in_polygon, const Clipper2Lib::PolyPathD *p_polypath_item) {
 	using namespace Clipper2Lib;

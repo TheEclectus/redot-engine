@@ -2,8 +2,8 @@
 /*  tile_set_atlas_source_editor.cpp                                      */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -998,7 +998,7 @@ void TileSetAtlasSourceEditor::_update_atlas_view() {
 			// Create and position the button.
 			Button *button = memnew(Button);
 			button->set_flat(true);
-			button->set_icon(get_editor_theme_icon(SNAME("Add")));
+			button->set_button_icon(get_editor_theme_icon(SNAME("Add")));
 			button->add_theme_style_override(CoreStringName(normal), memnew(StyleBoxEmpty));
 			button->add_theme_style_override("hover", memnew(StyleBoxEmpty));
 			button->add_theme_style_override("focus", memnew(StyleBoxEmpty));
@@ -2453,12 +2453,12 @@ void TileSetAtlasSourceEditor::_notification(int p_what) {
 		} break;
 
 		case NOTIFICATION_THEME_CHANGED: {
-			tool_setup_atlas_source_button->set_icon(get_editor_theme_icon(SNAME("Tools")));
-			tool_select_button->set_icon(get_editor_theme_icon(SNAME("ToolSelect")));
-			tool_paint_button->set_icon(get_editor_theme_icon(SNAME("Paint")));
+			tool_setup_atlas_source_button->set_button_icon(get_editor_theme_icon(SNAME("Tools")));
+			tool_select_button->set_button_icon(get_editor_theme_icon(SNAME("ToolSelect")));
+			tool_paint_button->set_button_icon(get_editor_theme_icon(SNAME("Paint")));
 
-			tools_settings_erase_button->set_icon(get_editor_theme_icon(SNAME("Eraser")));
-			tool_advanced_menu_button->set_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
+			tools_settings_erase_button->set_button_icon(get_editor_theme_icon(SNAME("Eraser")));
+			tool_advanced_menu_button->set_button_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
 			outside_tiles_warning->set_texture(get_editor_theme_icon(SNAME("StatusWarning")));
 			tool_layer_transforms_menu_button->set_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
 

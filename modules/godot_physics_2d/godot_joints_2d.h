@@ -2,8 +2,8 @@
 /*  godot_joints_2d.h                                                     */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -72,7 +72,7 @@ public:
 				body->remove_constraint(this, i);
 			}
 		}
-	};
+	}
 };
 
 class GodotPinJoint2D : public GodotJoint2D {

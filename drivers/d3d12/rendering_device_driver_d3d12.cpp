@@ -2,8 +2,8 @@
 /*  rendering_device_driver_d3d12.cpp                                     */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -2005,6 +2005,8 @@ static D3D12_BARRIER_LAYOUT _rd_texture_layout_to_d3d12_barrier_layout(RDD::Text
 	switch (p_texture_layout) {
 		case RDD::TEXTURE_LAYOUT_UNDEFINED:
 			return D3D12_BARRIER_LAYOUT_UNDEFINED;
+		case RDD::TEXTURE_LAYOUT_GENERAL:
+			return D3D12_BARRIER_LAYOUT_COMMON;
 		case RDD::TEXTURE_LAYOUT_STORAGE_OPTIMAL:
 			return D3D12_BARRIER_LAYOUT_UNORDERED_ACCESS;
 		case RDD::TEXTURE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL:
@@ -2460,8 +2462,6 @@ Error RenderingDeviceDriverD3D12::swap_chain_resize(CommandQueueID p_cmd_queue, 
 			present_flags = 0;
 			break;
 	}
-
-	print_verbose("Using swap chain flags: " + itos(creation_flags) + ", sync interval: " + itos(sync_interval) + ", present flags: " + itos(present_flags));
 
 	if (swap_chain->d3d_swap_chain != nullptr && creation_flags != swap_chain->creation_flags) {
 		// The swap chain must be recreated if the creation flags are different.
@@ -6177,6 +6177,8 @@ uint64_t RenderingDeviceDriverD3D12::api_trait_get(ApiTrait p_trait) {
 			return false;
 		case API_TRAIT_CLEARS_WITH_COPY_ENGINE:
 			return false;
+		case API_TRAIT_USE_GENERAL_IN_COPY_QUEUES:
+			return true;
 		default:
 			return RenderingDeviceDriver::api_trait_get(p_trait);
 	}
@@ -6583,7 +6585,7 @@ static Error create_command_signature(ID3D12Device *device, D3D12_INDIRECT_ARGUM
 	HRESULT res = device->CreateCommandSignature(&cs_desc, nullptr, IID_PPV_ARGS(r_cmd_sig->GetAddressOf()));
 	ERR_FAIL_COND_V_MSG(!SUCCEEDED(res), ERR_CANT_CREATE, "CreateCommandSignature failed with error " + vformat("0x%08ux", (uint64_t)res) + ".");
 	return OK;
-};
+}
 
 Error RenderingDeviceDriverD3D12::_initialize_frames(uint32_t p_frame_count) {
 	Error err;

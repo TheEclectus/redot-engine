@@ -2,8 +2,8 @@
 /*  visual_shader.cpp                                                     */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1562,7 +1562,7 @@ String VisualShader::generate_preview_shader(Type p_type, int p_node, int p_port
 			shader_code += "	COLOR.rgb = n_out" + itos(p_node) + "p" + itos(p_port) + ";\n";
 		} break;
 		case VisualShaderNode::PORT_TYPE_VECTOR_4D: {
-			shader_code += "	COLOR.rgb = n_out" + itos(p_node) + "p" + itos(p_port) + ".xyz;\n";
+			shader_code += "	COLOR = n_out" + itos(p_node) + "p" + itos(p_port) + ";\n";
 		} break;
 		default: {
 			shader_code += "	COLOR.rgb = vec3(0.0);\n";

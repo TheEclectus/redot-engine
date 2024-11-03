@@ -2,8 +2,8 @@
 /*  openxr_api.cpp                                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1296,7 +1296,7 @@ bool OpenXRAPI::create_main_swapchains(Size2i p_size) {
 	}
 
 	return true;
-};
+}
 
 void OpenXRAPI::destroy_session() {
 	// TODO need to figure out if we're still rendering our current frame
@@ -2355,7 +2355,7 @@ void OpenXRAPI::post_draw_viewport(RID p_render_target) {
 	for (OpenXRExtensionWrapper *wrapper : registered_extension_wrappers) {
 		wrapper->on_post_draw_viewport(p_render_target);
 	}
-};
+}
 
 void OpenXRAPI::end_frame() {
 	XrResult result;

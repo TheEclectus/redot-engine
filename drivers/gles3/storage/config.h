@@ -2,8 +2,8 @@
 /*  config.h                                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -97,12 +97,15 @@ public:
 	bool multiview_supported = false;
 	bool external_texture_supported = false;
 
-	// Adreno 3XX compatibility
-	bool disable_particles_workaround = false; // set to 'true' to disable 'GPUParticles'
+	// Adreno 3XX compatibility.
+	bool disable_particles_workaround = false; // Set to 'true' to disable 'GPUParticles'.
 	bool flip_xy_workaround = false;
 
-	// PowerVR GE 8320 workaround
+	// PowerVR GE 8320 workaround.
 	bool disable_transform_feedback_shader_cache = false;
+
+	// ANGLE shader workaround.
+	bool polyfill_half2float = true;
 
 #ifdef ANDROID_ENABLED
 	PFNGLFRAMEBUFFERTEXTUREMULTIVIEWOVRPROC eglFramebufferTextureMultiviewOVR = nullptr;
@@ -112,7 +115,7 @@ public:
 	PFNEGLIMAGETARGETTEXTURE2DOESPROC eglEGLImageTargetTexture2DOES = nullptr;
 #endif
 
-	static Config *get_singleton() { return singleton; };
+	static Config *get_singleton() { return singleton; }
 
 	Config();
 	~Config();

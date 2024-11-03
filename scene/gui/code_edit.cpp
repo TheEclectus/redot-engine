@@ -2,8 +2,8 @@
 /*  code_edit.cpp                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1483,7 +1483,7 @@ void CodeEdit::_line_number_draw_callback(int p_line, int p_gutter, const Rect2 
 	if (E) {
 		text_rid = E->value;
 	} else {
-		String fc = String::num(p_line + 1).lpad(line_number_digits, line_number_padding);
+		String fc = String::num_int64(p_line + 1).lpad(line_number_digits, line_number_padding);
 		if (is_localizing_numeral_system()) {
 			fc = TS->format_number(fc);
 		}

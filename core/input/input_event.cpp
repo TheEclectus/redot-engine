@@ -2,8 +2,8 @@
 /*  input_event.cpp                                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -36,9 +36,6 @@
 #include "core/input/shortcut.h"
 #include "core/os/keyboard.h"
 #include "core/os/os.h"
-
-const int InputEvent::DEVICE_ID_EMULATION = -1;
-const int InputEvent::DEVICE_ID_INTERNAL = -2;
 
 void InputEvent::set_device(int p_device) {
 	device = p_device;

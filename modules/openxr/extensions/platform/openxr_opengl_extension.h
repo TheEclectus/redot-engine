@@ -2,8 +2,8 @@
 /*  openxr_opengl_extension.h                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -66,8 +66,17 @@ private:
 	static XrGraphicsBindingOpenGLWin32KHR graphics_binding_gl;
 #elif defined(ANDROID_ENABLED)
 	static XrGraphicsBindingOpenGLESAndroidKHR graphics_binding_gl;
-#else // Linux/X11
+#elif defined(LINUXBSD_ENABLED)
+#ifdef X11_ENABLED
 	static XrGraphicsBindingOpenGLXlibKHR graphics_binding_gl;
+#endif
+#if defined(EGL_ENABLED) && defined(WAYLAND_ENABLED)
+	static XrGraphicsBindingEGLMNDX graphics_binding_egl;
+
+	bool egl_extension_enabled = false;
+#endif
+#else
+#error "OpenXR with OpenGL isn't supported on this platform"
 #endif
 
 	struct SwapchainGraphicsData {

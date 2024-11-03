@@ -2,8 +2,8 @@
 /*  editor_spin_slider.h                                                  */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -103,8 +103,6 @@ protected:
 	void _focus_entered();
 
 public:
-	virtual bool is_text_field() const override;
-
 	String get_tooltip(const Point2 &p_pos) const override;
 
 	String get_text_value() const;

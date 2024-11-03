@@ -2,8 +2,8 @@
 /*  navigation_obstacle_3d_editor_plugin.cpp                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -48,8 +48,8 @@
 void NavigationObstacle3DEditor::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_READY: {
-			button_create->set_icon(get_editor_theme_icon(SNAME("Edit")));
-			button_edit->set_icon(get_editor_theme_icon(SNAME("MovePoint")));
+			button_create->set_button_icon(get_editor_theme_icon(SNAME("Edit")));
+			button_edit->set_button_icon(get_editor_theme_icon(SNAME("MovePoint")));
 			button_edit->set_pressed(true);
 			get_tree()->connect("node_removed", callable_mp(this, &NavigationObstacle3DEditor::_node_removed));
 

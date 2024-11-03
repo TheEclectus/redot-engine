@@ -2,8 +2,8 @@
 /*  input_map.h                                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -45,11 +45,6 @@ class InputMap : public Object {
 	GDCLASS(InputMap, Object);
 
 public:
-	/**
-	 * A special value used to signify that a given Action can be triggered by any device
-	 */
-	static int ALL_DEVICES;
-
 	struct Action {
 		int id;
 		float deadzone;

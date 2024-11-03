@@ -2,8 +2,8 @@
 /*  utilities.h                                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -126,7 +126,7 @@ public:
 	virtual RenderingDevice::DeviceType get_video_adapter_type() const override { return RenderingDevice::DeviceType::DEVICE_TYPE_OTHER; }
 	virtual String get_video_adapter_api_version() const override { return String(); }
 
-	virtual Size2i get_maximum_viewport_size() const override { return Size2i(); };
+	virtual Size2i get_maximum_viewport_size() const override { return Size2i(); }
 };
 
 } // namespace RendererDummy

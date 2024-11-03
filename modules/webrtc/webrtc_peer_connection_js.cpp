@@ -2,8 +2,8 @@
 /*  webrtc_peer_connection_js.cpp                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -152,5 +152,5 @@ WebRTCPeerConnectionJS::~WebRTCPeerConnectionJS() {
 		godot_js_rtc_pc_destroy(_js_id);
 		_js_id = 0;
 	}
-};
+}
 #endif

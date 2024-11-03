@@ -2,8 +2,8 @@
 /*  collada.h                                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -361,7 +361,7 @@ public:
 			for (int i = 0; i < children.size(); i++) {
 				memdelete(children[i]);
 			}
-		};
+		}
 	};
 
 	struct NodeSkeleton : public Node {

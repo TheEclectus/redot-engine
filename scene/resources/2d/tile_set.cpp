@@ -2,8 +2,8 @@
 /*  tile_set.cpp                                                          */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -176,13 +176,13 @@ void TileMapPattern::set_size(const Size2i &p_size) {
 
 bool TileMapPattern::is_empty() const {
 	return pattern.is_empty();
-};
+}
 
 void TileMapPattern::clear() {
 	size = Size2i();
 	pattern.clear();
 	emit_changed();
-};
+}
 
 bool TileMapPattern::_set(const StringName &p_name, const Variant &p_value) {
 	if (p_name == "tile_data") {
@@ -573,11 +573,11 @@ void TileSet::set_uv_clipping(bool p_uv_clipping) {
 
 bool TileSet::is_uv_clipping() const {
 	return uv_clipping;
-};
+}
 
 int TileSet::get_occlusion_layers_count() const {
 	return occlusion_layers.size();
-};
+}
 
 void TileSet::add_occlusion_layer(int p_index) {
 	if (p_index < 0) {
@@ -3693,7 +3693,7 @@ Array TileSet::compatibility_tilemap_map(int p_tile_id, Vector2i p_coords, bool 
 			return cannot_convert_array;
 			break;
 	}
-};
+}
 
 #endif // DISABLE_DEPRECATED
 
@@ -4434,7 +4434,7 @@ TileSet *TileSetSource::get_tile_set() const {
 
 void TileSetSource::reset_state() {
 	tile_set = nullptr;
-};
+}
 
 void TileSetSource::_bind_methods() {
 	// Base tiles
@@ -6482,9 +6482,9 @@ int TileData::get_terrain_set() const {
 }
 
 void TileData::set_terrain(int p_terrain) {
-	ERR_FAIL_COND(terrain_set < 0);
 	ERR_FAIL_COND(p_terrain < -1);
-	if (tile_set) {
+	ERR_FAIL_COND(terrain_set < 0 && p_terrain != -1);
+	if (tile_set && terrain_set >= 0) {
 		ERR_FAIL_COND(p_terrain >= tile_set->get_terrains_count(terrain_set));
 	}
 	terrain = p_terrain;
@@ -6497,9 +6497,9 @@ int TileData::get_terrain() const {
 
 void TileData::set_terrain_peering_bit(TileSet::CellNeighbor p_peering_bit, int p_terrain_index) {
 	ERR_FAIL_INDEX(p_peering_bit, TileSet::CellNeighbor::CELL_NEIGHBOR_MAX);
-	ERR_FAIL_COND(terrain_set < 0);
 	ERR_FAIL_COND(p_terrain_index < -1);
-	if (tile_set) {
+	ERR_FAIL_COND(terrain_set < 0 && p_terrain_index != -1);
+	if (tile_set && terrain_set >= 0) {
 		ERR_FAIL_COND(p_terrain_index >= tile_set->get_terrains_count(terrain_set));
 		ERR_FAIL_COND(!is_valid_terrain_peering_bit(p_peering_bit));
 	}

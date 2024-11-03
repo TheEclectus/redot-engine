@@ -2,8 +2,8 @@
 /*  editor_help_search.cpp                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -246,8 +246,8 @@ void EditorHelpSearch::_notification(int p_what) {
 			search_box->set_right_icon(get_editor_theme_icon(SNAME("Search")));
 			search_box->add_theme_icon_override("right_icon", get_editor_theme_icon(SNAME("Search")));
 
-			case_sensitive_button->set_icon(get_editor_theme_icon(SNAME("MatchCase")));
-			hierarchy_button->set_icon(get_editor_theme_icon(SNAME("ClassList")));
+			case_sensitive_button->set_button_icon(get_editor_theme_icon(SNAME("MatchCase")));
+			hierarchy_button->set_button_icon(get_editor_theme_icon(SNAME("ClassList")));
 
 			if (is_visible()) {
 				_update_results();

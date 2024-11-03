@@ -2,8 +2,8 @@
 /*  light_occluder_2d.cpp                                                 */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -92,6 +92,7 @@ void OccluderPolygon2D::set_polygon(const Vector<Vector2> &p_polygon) {
 	rect_cache_dirty = true;
 	RS::get_singleton()->canvas_occluder_polygon_set_shape(occ_polygon, p_polygon, closed);
 	emit_changed();
+	update_configuration_warning();
 }
 
 Vector<Vector2> OccluderPolygon2D::get_polygon() const {

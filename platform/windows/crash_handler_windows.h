@@ -2,8 +2,8 @@
 /*  crash_handler_windows.h                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -53,7 +53,7 @@ public:
 	void initialize();
 
 	void disable();
-	bool is_disabled() const { return disabled; };
+	bool is_disabled() const { return disabled; }
 
 	CrashHandler();
 	~CrashHandler();

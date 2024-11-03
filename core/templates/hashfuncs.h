@@ -2,8 +2,8 @@
 /*  hashfuncs.h                                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -393,6 +393,13 @@ struct HashMapHasherDefault {
 		h = hash_murmur3_one_real(p_aabb.size.z, h);
 		return hash_fmix32(h);
 	}
+};
+
+struct HashHasher {
+	static _FORCE_INLINE_ uint32_t hash(const int32_t hash) { return hash; }
+	static _FORCE_INLINE_ uint32_t hash(const uint32_t hash) { return hash; }
+	static _FORCE_INLINE_ uint64_t hash(const int64_t hash) { return hash; }
+	static _FORCE_INLINE_ uint64_t hash(const uint64_t hash) { return hash; }
 };
 
 // TODO: Fold this into HashMapHasherDefault once C++20 concepts are allowed

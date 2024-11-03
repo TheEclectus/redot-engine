@@ -2,8 +2,8 @@
 /*  crypto.cpp                                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -242,7 +242,7 @@ Error ResourceFormatSaverCrypto::save(const Ref<Resource> &p_resource, const Str
 	} else {
 		ERR_FAIL_V(ERR_INVALID_PARAMETER);
 	}
-	ERR_FAIL_COND_V_MSG(err != OK, err, "Cannot save Crypto resource to file '" + p_path + "'.");
+	ERR_FAIL_COND_V_MSG(err != OK, err, vformat("Cannot save Crypto resource to file '%s'.", p_path));
 	return OK;
 }
 

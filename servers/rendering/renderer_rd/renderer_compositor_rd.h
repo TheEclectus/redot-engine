@@ -2,8 +2,8 @@
 /*  renderer_compositor_rd.h                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -33,6 +33,7 @@
 #ifndef RENDERER_COMPOSITOR_RD_H
 #define RENDERER_COMPOSITOR_RD_H
 
+#include "core/io/image.h"
 #include "core/os/os.h"
 #include "servers/rendering/renderer_compositor.h"
 #include "servers/rendering/renderer_rd/environment/fog.h"
@@ -75,6 +76,10 @@ protected:
 		float src_rect[4];
 		float dst_rect[4];
 
+		float rotation_sin;
+		float rotation_cos;
+		float pad[2];
+
 		float eye_center[2];
 		float k1;
 		float k2;
@@ -104,7 +109,7 @@ protected:
 	static RendererCompositorRD *singleton;
 
 public:
-	RendererUtilities *get_utilities() { return utilities; };
+	RendererUtilities *get_utilities() { return utilities; }
 	RendererLightStorage *get_light_storage() { return light_storage; }
 	RendererMaterialStorage *get_material_storage() { return material_storage; }
 	RendererMeshStorage *get_mesh_storage() { return mesh_storage; }

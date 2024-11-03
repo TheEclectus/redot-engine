@@ -2,8 +2,8 @@
 /*  image_loader.cpp                                                      */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -89,7 +89,7 @@ Error ImageLoader::load_image(const String &p_file, Ref<Image> p_image, Ref<File
 	if (f.is_null()) {
 		Error err;
 		f = FileAccess::open(p_file, FileAccess::READ, &err);
-		ERR_FAIL_COND_V_MSG(f.is_null(), err, "Error opening file '" + p_file + "'.");
+		ERR_FAIL_COND_V_MSG(f.is_null(), err, vformat("Error opening file '%s'.", p_file));
 	}
 
 	String extension = p_file.get_extension();
@@ -100,7 +100,7 @@ Error ImageLoader::load_image(const String &p_file, Ref<Image> p_image, Ref<File
 		}
 		Error err = loader.write[i]->load_image(p_image, f, p_flags, p_scale);
 		if (err != OK) {
-			ERR_PRINT("Error loading image: " + p_file);
+			ERR_PRINT(vformat("Error loading image: '%s'.", p_file));
 		}
 
 		if (err != ERR_FILE_UNRECOGNIZED) {

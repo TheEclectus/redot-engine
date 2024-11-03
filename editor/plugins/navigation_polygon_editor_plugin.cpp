@@ -2,8 +2,8 @@
 /*  navigation_polygon_editor_plugin.cpp                                  */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -179,8 +179,8 @@ NavigationPolygonEditor::NavigationPolygonEditor() {
 void NavigationPolygonEditor::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_ENTER_TREE: {
-			button_bake->set_icon(get_editor_theme_icon(SNAME("Bake")));
-			button_reset->set_icon(get_editor_theme_icon(SNAME("Reload")));
+			button_bake->set_button_icon(get_editor_theme_icon(SNAME("Bake")));
+			button_reset->set_button_icon(get_editor_theme_icon(SNAME("Reload")));
 		} break;
 		case EditorSettings::NOTIFICATION_EDITOR_SETTINGS_CHANGED: {
 			if (rebake_timer) {

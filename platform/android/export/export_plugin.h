@@ -2,8 +2,8 @@
 /*  export_plugin.h                                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -37,6 +37,7 @@
 #include "godot_plugin_config.h"
 #endif // DISABLE_DEPRECATED
 
+#include "core/io/image.h"
 #include "core/io/zip_io.h"
 #include "core/os/os.h"
 #include "editor/export/editor_export_platform.h"

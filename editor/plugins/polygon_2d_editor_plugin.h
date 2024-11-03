@@ -2,8 +2,8 @@
 /*  polygon_2d_editor_plugin.h                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -170,7 +170,7 @@ protected:
 
 	virtual Vector2 _get_offset(int p_idx) const override;
 
-	virtual bool _has_uv() const override { return true; };
+	virtual bool _has_uv() const override { return true; }
 	virtual void _commit_action() override;
 
 	void _notification(int p_what);

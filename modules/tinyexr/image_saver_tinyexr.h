@@ -2,8 +2,8 @@
 /*  image_saver_tinyexr.h                                                 */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -33,7 +33,7 @@
 #ifndef IMAGE_SAVER_TINYEXR_H
 #define IMAGE_SAVER_TINYEXR_H
 
-#include "core/os/os.h"
+#include "core/io/image.h"
 
 Error save_exr(const String &p_path, const Ref<Image> &p_img, bool p_grayscale);
 Vector<uint8_t> save_exr_buffer(const Ref<Image> &p_img, bool p_grayscale);

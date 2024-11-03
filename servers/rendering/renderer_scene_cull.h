@@ -2,8 +2,8 @@
 /*  renderer_scene_cull.h                                                 */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1123,6 +1123,7 @@ public:
 	struct Cull {
 		struct Shadow {
 			RID light_instance;
+			uint32_t caster_mask;
 			struct Cascade {
 				Frustum frustum;
 

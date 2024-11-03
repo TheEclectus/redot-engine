@@ -2,8 +2,8 @@
 /*  mesh_editor_plugin.cpp                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -60,8 +60,8 @@ void MeshEditor::_update_theme_item_cache() {
 void MeshEditor::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_THEME_CHANGED: {
-			light_1_switch->set_icon(theme_cache.light_1_icon);
-			light_2_switch->set_icon(theme_cache.light_2_icon);
+			light_1_switch->set_button_icon(theme_cache.light_1_icon);
+			light_2_switch->set_button_icon(theme_cache.light_2_icon);
 		} break;
 	}
 }

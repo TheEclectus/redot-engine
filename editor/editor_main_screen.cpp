@@ -2,8 +2,8 @@
 /*  editor_main_screen.cpp                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -68,9 +68,9 @@ void EditorMainScreen::_notification(int p_what) {
 				Ref<Texture2D> icon = p_editor->get_icon();
 
 				if (icon.is_valid()) {
-					tb->set_icon(icon);
+					tb->set_button_icon(icon);
 				} else if (has_theme_icon(p_editor->get_name(), EditorStringName(EditorIcons))) {
-					tb->set_icon(get_theme_icon(p_editor->get_name(), EditorStringName(EditorIcons)));
+					tb->set_button_icon(get_theme_icon(p_editor->get_name(), EditorStringName(EditorIcons)));
 				}
 			}
 		} break;
@@ -246,7 +246,7 @@ void EditorMainScreen::add_main_plugin(EditorPlugin *p_editor) {
 		icon = get_editor_theme_icon(p_editor->get_name());
 	}
 	if (icon.is_valid()) {
-		tb->set_icon(icon);
+		tb->set_button_icon(icon);
 		// Make sure the control is updated if the icon is reimported.
 		icon->connect_changed(callable_mp((Control *)tb, &Control::update_minimum_size));
 	}

@@ -2,8 +2,8 @@
 /*  editor_node.h                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -934,7 +934,7 @@ public:
 	void dim_editor(bool p_dimming);
 	bool is_editor_dimmed() const;
 
-	void edit_current() { _edit_current(); };
+	void edit_current() { _edit_current(); }
 
 	bool has_scenes_in_session();
 

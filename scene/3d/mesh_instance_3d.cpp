@@ -2,8 +2,8 @@
 /*  mesh_instance_3d.cpp                                                  */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -334,8 +334,8 @@ void MeshInstance3D::create_multiple_convex_collisions(const Ref<MeshConvexDecom
 
 void MeshInstance3D::_notification(int p_what) {
 	switch (p_what) {
-		case NOTIFICATION_READY: {
-			callable_mp(this, &MeshInstance3D::_resolve_skeleton_path).call_deferred();
+		case NOTIFICATION_ENTER_TREE: {
+			_resolve_skeleton_path();
 		} break;
 		case NOTIFICATION_TRANSLATION_CHANGED: {
 			if (mesh.is_valid()) {

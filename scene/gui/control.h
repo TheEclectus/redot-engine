@@ -2,8 +2,8 @@
 /*  control.h                                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -142,9 +142,14 @@ public:
 
 	enum LayoutDirection {
 		LAYOUT_DIRECTION_INHERITED,
-		LAYOUT_DIRECTION_LOCALE,
+		LAYOUT_DIRECTION_APPLICATION_LOCALE,
 		LAYOUT_DIRECTION_LTR,
-		LAYOUT_DIRECTION_RTL
+		LAYOUT_DIRECTION_RTL,
+		LAYOUT_DIRECTION_SYSTEM_LOCALE,
+		LAYOUT_DIRECTION_MAX,
+#ifndef DISABLE_DEPRECATED
+		LAYOUT_DIRECTION_LOCALE = LAYOUT_DIRECTION_APPLICATION_LOCALE,
+#endif // DISABLE_DEPRECATED
 	};
 
 	enum TextDirection {

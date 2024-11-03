@@ -2,8 +2,8 @@
 /*  path_2d.cpp                                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -169,16 +169,15 @@ void Path2D::_curve_changed() {
 		return;
 	}
 
-	if (!Engine::get_singleton()->is_editor_hint() && !get_tree()->is_debugging_paths_hint()) {
-		return;
-	}
-
-	queue_redraw();
 	for (int i = 0; i < get_child_count(); i++) {
 		PathFollow2D *follow = Object::cast_to<PathFollow2D>(get_child(i));
 		if (follow) {
 			follow->path_changed();
 		}
+	}
+
+	if (Engine::get_singleton()->is_editor_hint() || get_tree()->is_debugging_paths_hint()) {
+		queue_redraw();
 	}
 }
 

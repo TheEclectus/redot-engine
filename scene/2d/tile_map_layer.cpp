@@ -2,8 +2,8 @@
 /*  tile_map_layer.cpp                                                    */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -948,7 +948,7 @@ void TileMapLayer::_physics_draw_cell_debug(const RID &p_canvas_item, const Vect
 			rs->canvas_item_add_set_transform(p_canvas_item, Transform2D());
 		}
 	}
-};
+}
 #endif // DEBUG_ENABLED
 
 /////////////////////////////// Navigation //////////////////////////////////////

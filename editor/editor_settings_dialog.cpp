@@ -2,8 +2,8 @@
 /*  editor_settings_dialog.cpp                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -287,7 +287,7 @@ void EditorSettingsDialog::_update_icons() {
 	shortcut_search_box->set_right_icon(shortcuts->get_editor_theme_icon(SNAME("Search")));
 	shortcut_search_box->set_clear_button_enabled(true);
 
-	restart_close_button->set_icon(shortcuts->get_editor_theme_icon(SNAME("Close")));
+	restart_close_button->set_button_icon(shortcuts->get_editor_theme_icon(SNAME("Close")));
 	restart_container->add_theme_style_override(SceneStringName(panel), shortcuts->get_theme_stylebox(SceneStringName(panel), SNAME("Tree")));
 	restart_icon->set_texture(shortcuts->get_editor_theme_icon(SNAME("StatusWarning")));
 	restart_label->add_theme_color_override(SceneStringName(font_color), shortcuts->get_theme_color(SNAME("warning_color"), EditorStringName(Editor)));

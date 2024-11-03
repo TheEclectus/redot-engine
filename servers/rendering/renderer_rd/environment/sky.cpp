@@ -2,8 +2,8 @@
 /*  sky.cpp                                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -703,7 +703,7 @@ RendererRD::MaterialStorage::ShaderData *SkyRD::_create_sky_shader_func() {
 RendererRD::MaterialStorage::ShaderData *SkyRD::_create_sky_shader_funcs() {
 	// !BAS! Why isn't _create_sky_shader_func not just static too?
 	return static_cast<RendererSceneRenderRD *>(RendererSceneRenderRD::singleton)->sky._create_sky_shader_func();
-};
+}
 
 RendererRD::MaterialStorage::MaterialData *SkyRD::_create_sky_material_func(SkyShaderData *p_shader) {
 	SkyMaterialData *material_data = memnew(SkyMaterialData);
@@ -715,7 +715,7 @@ RendererRD::MaterialStorage::MaterialData *SkyRD::_create_sky_material_func(SkyS
 RendererRD::MaterialStorage::MaterialData *SkyRD::_create_sky_material_funcs(RendererRD::MaterialStorage::ShaderData *p_shader) {
 	// !BAS! same here, we could just make _create_sky_material_func static?
 	return static_cast<RendererSceneRenderRD *>(RendererSceneRenderRD::singleton)->sky._create_sky_material_func(static_cast<SkyShaderData *>(p_shader));
-};
+}
 
 SkyRD::SkyRD() {
 	roughness_layers = GLOBAL_GET("rendering/reflections/sky_reflections/roughness_layers");

@@ -2,8 +2,8 @@
 /*  gdscript_docgen.cpp                                                   */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -219,7 +219,7 @@ String GDScriptDocGen::_docvalue_from_variant(const Variant &p_variant, int p_re
 
 				List<Variant> keys;
 				dict.get_key_list(&keys);
-				keys.sort();
+				keys.sort_custom<StringLikeVariantOrder>();
 
 				for (List<Variant>::Element *E = keys.front(); E; E = E->next()) {
 					if (E->prev()) {

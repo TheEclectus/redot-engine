@@ -2,8 +2,8 @@
 /*  input_map.cpp                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -40,8 +40,6 @@
 #include "core/variant/typed_array.h"
 
 InputMap *InputMap::singleton = nullptr;
-
-int InputMap::ALL_DEVICES = -1;
 
 void InputMap::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("has_action", "action"), &InputMap::has_action);
@@ -118,7 +116,7 @@ void InputMap::get_argument_options(const StringName &p_function, int p_idx, Lis
 #endif
 
 void InputMap::add_action(const StringName &p_action, float p_deadzone) {
-	ERR_FAIL_COND_MSG(input_map.has(p_action), "InputMap already has action \"" + String(p_action) + "\".");
+	ERR_FAIL_COND_MSG(input_map.has(p_action), vformat("InputMap already has action \"%s\".", String(p_action)));
 	input_map[p_action] = Action();
 	static int last_id = 1;
 	input_map[p_action].id = last_id;
@@ -165,7 +163,7 @@ List<Ref<InputEvent>>::Element *InputMap::_find_event(Action &p_action, const Re
 	int i = 0;
 	for (List<Ref<InputEvent>>::Element *E = p_action.inputs.front(); E; E = E->next()) {
 		int device = E->get()->get_device();
-		if (device == ALL_DEVICES || device == p_event->get_device()) {
+		if (device == InputEvent::DEVICE_ID_ALL_DEVICES || device == p_event->get_device()) {
 			if (E->get()->action_match(p_event, p_exact_match, p_action.deadzone, r_pressed, r_strength, r_raw_strength)) {
 				if (r_event_index) {
 					*r_event_index = i;

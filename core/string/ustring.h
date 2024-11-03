@@ -2,8 +2,8 @@
 /*  ustring.h                                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -120,7 +120,7 @@ public:
 	Char16String &operator+=(char16_t p_char);
 	int length() const { return size() ? size() - 1 : 0; }
 	const char16_t *get_data() const;
-	operator const char16_t *() const { return get_data(); };
+	operator const char16_t *() const { return get_data(); }
 
 protected:
 	void copy_from(const char16_t *p_cstr);
@@ -162,7 +162,7 @@ public:
 	CharString &operator+=(char p_char);
 	int length() const { return size() ? size() - 1 : 0; }
 	const char *get_data() const;
-	operator const char *() const { return get_data(); };
+	operator const char *() const { return get_data(); }
 
 protected:
 	void copy_from(const char *p_cstr);
@@ -334,6 +334,7 @@ public:
 	static String num(double p_num, int p_decimals = -1);
 	static String num_scientific(double p_num);
 	static String num_real(double p_num, bool p_trailing = true);
+	static String num_real(float p_num, bool p_trailing = true);
 	static String num_int64(int64_t p_num, int base = 10, bool capitalize_hex = false);
 	static String num_uint64(uint64_t p_num, int base = 10, bool capitalize_hex = false);
 	static String chr(char32_t p_char);

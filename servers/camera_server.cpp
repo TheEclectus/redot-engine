@@ -2,8 +2,8 @@
 /*  camera_server.cpp                                                     */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -55,13 +55,13 @@ void CameraServer::_bind_methods() {
 	BIND_ENUM_CONSTANT(FEED_YCBCR_IMAGE);
 	BIND_ENUM_CONSTANT(FEED_Y_IMAGE);
 	BIND_ENUM_CONSTANT(FEED_CBCR_IMAGE);
-};
+}
 
 CameraServer *CameraServer::singleton = nullptr;
 
 CameraServer *CameraServer::get_singleton() {
 	return singleton;
-};
+}
 
 int CameraServer::get_free_id() {
 	bool id_exists = true;
@@ -79,7 +79,7 @@ int CameraServer::get_free_id() {
 	};
 
 	return newid;
-};
+}
 
 int CameraServer::get_feed_index(int p_id) {
 	for (int i = 0; i < feeds.size(); i++) {
@@ -89,7 +89,7 @@ int CameraServer::get_feed_index(int p_id) {
 	};
 
 	return -1;
-};
+}
 
 Ref<CameraFeed> CameraServer::get_feed_by_id(int p_id) {
 	int index = get_feed_index(p_id);
@@ -99,7 +99,7 @@ Ref<CameraFeed> CameraServer::get_feed_by_id(int p_id) {
 	} else {
 		return feeds[index];
 	}
-};
+}
 
 void CameraServer::add_feed(const Ref<CameraFeed> &p_feed) {
 	ERR_FAIL_COND(p_feed.is_null());
@@ -111,7 +111,7 @@ void CameraServer::add_feed(const Ref<CameraFeed> &p_feed) {
 
 	// let whomever is interested know
 	emit_signal(SNAME("camera_feed_added"), p_feed->get_id());
-};
+}
 
 void CameraServer::remove_feed(const Ref<CameraFeed> &p_feed) {
 	for (int i = 0; i < feeds.size(); i++) {
@@ -128,17 +128,17 @@ void CameraServer::remove_feed(const Ref<CameraFeed> &p_feed) {
 			return;
 		};
 	};
-};
+}
 
 Ref<CameraFeed> CameraServer::get_feed(int p_index) {
 	ERR_FAIL_INDEX_V(p_index, feeds.size(), nullptr);
 
 	return feeds[p_index];
-};
+}
 
 int CameraServer::get_feed_count() {
 	return feeds.size();
-};
+}
 
 TypedArray<CameraFeed> CameraServer::get_feeds() {
 	TypedArray<CameraFeed> return_feeds;
@@ -150,7 +150,7 @@ TypedArray<CameraFeed> CameraServer::get_feeds() {
 	};
 
 	return return_feeds;
-};
+}
 
 RID CameraServer::feed_texture(int p_id, CameraServer::FeedImage p_texture) {
 	int index = get_feed_index(p_id);
@@ -159,12 +159,12 @@ RID CameraServer::feed_texture(int p_id, CameraServer::FeedImage p_texture) {
 	Ref<CameraFeed> feed = get_feed(index);
 
 	return feed->get_texture(p_texture);
-};
+}
 
 CameraServer::CameraServer() {
 	singleton = this;
-};
+}
 
 CameraServer::~CameraServer() {
 	singleton = nullptr;
-};
+}

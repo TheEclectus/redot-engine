@@ -2,8 +2,8 @@
 /*  expression.cpp                                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1493,7 +1493,7 @@ Error Expression::parse(const String &p_expression, const Vector<String> &p_inpu
 }
 
 Variant Expression::execute(const Array &p_inputs, Object *p_base, bool p_show_error, bool p_const_calls_only) {
-	ERR_FAIL_COND_V_MSG(error_set, Variant(), "There was previously a parse error: " + error_str + ".");
+	ERR_FAIL_COND_V_MSG(error_set, Variant(), vformat("There was previously a parse error: %s.", error_str));
 
 	execution_error = false;
 	Variant output;

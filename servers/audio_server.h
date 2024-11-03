@@ -2,8 +2,8 @@
 /*  audio_server.h                                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -101,6 +101,7 @@ public:
 	virtual Error init() = 0;
 	virtual void start() = 0;
 	virtual int get_mix_rate() const = 0;
+	virtual int get_input_mix_rate() const { return get_mix_rate(); }
 	virtual SpeakerMode get_speaker_mode() const = 0;
 	virtual float get_latency() { return 0; }
 
@@ -429,6 +430,8 @@ public:
 	uint64_t get_mix_count() const;
 	uint64_t get_mixed_frames() const;
 
+	String get_driver_name() const;
+
 	void notify_listener_changed();
 
 	virtual void init();
@@ -443,6 +446,7 @@ public:
 
 	virtual SpeakerMode get_speaker_mode() const;
 	virtual float get_mix_rate() const;
+	virtual float get_input_mix_rate() const;
 
 	virtual float read_output_peak_db() const;
 

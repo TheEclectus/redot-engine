@@ -2,8 +2,8 @@
 /*  shader_editor_plugin.h                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -71,6 +71,7 @@ class ShaderEditorPlugin : public EditorPlugin {
 		FILE_SAVE,
 		FILE_SAVE_AS,
 		FILE_INSPECT,
+		FILE_INSPECT_NATIVE_SHADER_CODE,
 		FILE_CLOSE,
 		CLOSE_ALL,
 		CLOSE_OTHER_TABS,

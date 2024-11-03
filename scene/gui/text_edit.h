@@ -2,8 +2,8 @@
 /*  text_edit.h                                                           */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -695,9 +695,9 @@ protected:
 	void _set_symbol_lookup_word(const String &p_symbol);
 
 	// Theme items.
-	virtual Color _get_brace_mismatch_color() const { return Color(); };
-	virtual Color _get_code_folding_color() const { return Color(); };
-	virtual Ref<Texture2D> _get_folded_eol_icon() const { return Ref<Texture2D>(); };
+	virtual Color _get_brace_mismatch_color() const { return Color(); }
+	virtual Color _get_code_folding_color() const { return Color(); }
+	virtual Ref<Texture2D> _get_folded_eol_icon() const { return Ref<Texture2D>(); }
 
 	/* Text manipulation */
 

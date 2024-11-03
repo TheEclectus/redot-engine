@@ -2,8 +2,8 @@
 /*  animation_node_state_machine.cpp                                      */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1621,7 +1621,7 @@ AnimationNode::NodeTimeInfo AnimationNodeStateMachine::_process(const AnimationM
 		playback_new = playback_new->duplicate(); // Don't process original when testing.
 	}
 
-	return playback_new->process(node_state.base_path, this, p_playback_info, p_test_only);
+	return playback_new->process(node_state.get_base_path(), this, p_playback_info, p_test_only);
 }
 
 String AnimationNodeStateMachine::get_caption() const {

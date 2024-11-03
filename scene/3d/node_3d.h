@@ -2,8 +2,8 @@
 /*  node_3d.h                                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -235,8 +235,8 @@ public:
 #ifdef TOOLS_ENABLED
 	virtual Transform3D get_global_gizmo_transform() const;
 	virtual Transform3D get_local_gizmo_transform() const;
-	virtual void set_transform_gizmo_visible(bool p_enabled) { data.transform_gizmo_visible = p_enabled; };
-	virtual bool is_transform_gizmo_visible() const { return data.transform_gizmo_visible; };
+	virtual void set_transform_gizmo_visible(bool p_enabled) { data.transform_gizmo_visible = p_enabled; }
+	virtual bool is_transform_gizmo_visible() const { return data.transform_gizmo_visible; }
 #endif
 	virtual void reparent(Node *p_parent, bool p_keep_global_transform = true) override;
 

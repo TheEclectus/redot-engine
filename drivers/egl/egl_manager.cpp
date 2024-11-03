@@ -2,8 +2,8 @@
 /*  egl_manager.cpp                                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -414,6 +414,30 @@ EGLContext EGLManager::get_context(DisplayServer::WindowID p_window_id) {
 	GLDisplay &display = displays[glwindow.gldisplay_id];
 
 	return display.egl_context;
+}
+
+EGLDisplay EGLManager::get_display(DisplayServer::WindowID p_window_id) {
+	GLWindow &glwindow = windows[p_window_id];
+
+	if (!glwindow.initialized) {
+		return EGL_NO_CONTEXT;
+	}
+
+	GLDisplay &display = displays[glwindow.gldisplay_id];
+
+	return display.egl_display;
+}
+
+EGLConfig EGLManager::get_config(DisplayServer::WindowID p_window_id) {
+	GLWindow &glwindow = windows[p_window_id];
+
+	if (!glwindow.initialized) {
+		return nullptr;
+	}
+
+	GLDisplay &display = displays[glwindow.gldisplay_id];
+
+	return display.egl_config;
 }
 
 Error EGLManager::initialize(void *p_native_display) {

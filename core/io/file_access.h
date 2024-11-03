@@ -2,8 +2,8 @@
 /*  file_access.h                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -217,8 +217,8 @@ public:
 	static bool get_read_only_attribute(const String &p_file);
 	static Error set_read_only_attribute(const String &p_file, bool p_ro);
 
-	static void set_backup_save(bool p_enable) { backup_save = p_enable; };
-	static bool is_backup_save_enabled() { return backup_save; };
+	static void set_backup_save(bool p_enable) { backup_save = p_enable; }
+	static bool is_backup_save_enabled() { return backup_save; }
 
 	static String get_md5(const String &p_file);
 	static String get_sha256(const String &p_file);

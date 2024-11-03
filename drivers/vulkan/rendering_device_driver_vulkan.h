@@ -2,8 +2,8 @@
 /*  rendering_device_driver_vulkan.h                                      */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -145,6 +145,11 @@ class RenderingDeviceDriverVulkan : public RenderingDeviceDriver {
 #if defined(VK_TRACK_DEVICE_MEMORY)
 	bool device_memory_report_support = false;
 #endif
+#if defined(SWAPPY_FRAME_PACING_ENABLED)
+	// Swappy frame pacer for Android.
+	bool swappy_frame_pacer_enable = false;
+	uint8_t swappy_mode = 2; // See default value for display/window/frame_pacing/android/swappy_mode.
+#endif
 	DeviceFunctions device_functions;
 
 	void _register_requested_device_extension(const CharString &p_extension_name, bool p_required);
@@ -174,7 +179,12 @@ private:
 	VmaPool _find_or_create_small_allocs_pool(uint32_t p_mem_type_index);
 
 private:
+#if defined(DEBUG_ENABLED) || defined(DEV_ENABLED)
+	// It's a circular buffer.
 	BufferID breadcrumb_buffer;
+	uint32_t breadcrumb_offset = 0u;
+	uint32_t breadcrumb_id = 0u;
+#endif
 
 public:
 	/*****************/
@@ -352,9 +362,13 @@ private:
 		LocalVector<uint32_t> command_queues_acquired_semaphores;
 		RenderPassID render_pass;
 		uint32_t image_index = 0;
+#ifdef ANDROID_ENABLED
+		uint64_t refresh_duration = 0;
+#endif
 	};
 
 	void _swap_chain_release(SwapChain *p_swap_chain);
+	VkExtent2D native_display_size;
 
 public:
 	virtual SwapChainID swap_chain_create(RenderingContextDriver::SurfaceID p_surface) override final;
@@ -362,11 +376,21 @@ public:
 	virtual FramebufferID swap_chain_acquire_framebuffer(CommandQueueID p_cmd_queue, SwapChainID p_swap_chain, bool &r_resize_required) override final;
 	virtual RenderPassID swap_chain_get_render_pass(SwapChainID p_swap_chain) override final;
 	virtual DataFormat swap_chain_get_format(SwapChainID p_swap_chain) override final;
+	virtual void swap_chain_set_max_fps(SwapChainID p_swap_chain, int p_max_fps) override final;
 	virtual void swap_chain_free(SwapChainID p_swap_chain) override final;
 
 	/*********************/
 	/**** FRAMEBUFFER ****/
 	/*********************/
+
+	struct Framebuffer {
+		VkFramebuffer vk_framebuffer = VK_NULL_HANDLE;
+
+		// Only filled in by a framebuffer created by a swap chain. Unused otherwise.
+		VkImage swap_chain_image = VK_NULL_HANDLE;
+		VkImageSubresourceRange swap_chain_image_subresource_range = {};
+		bool swap_chain_acquired = false;
+	};
 
 	virtual FramebufferID framebuffer_create(RenderPassID p_render_pass, VectorView<TextureID> p_attachments, uint32_t p_width, uint32_t p_height) override final;
 	virtual void framebuffer_free(FramebufferID p_framebuffer) override final;

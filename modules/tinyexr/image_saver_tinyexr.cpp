@@ -2,8 +2,8 @@
 /*  image_saver_tinyexr.cpp                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -33,6 +33,7 @@
 #include "image_saver_tinyexr.h"
 
 #include "core/math/math_funcs.h"
+#include "core/os/os.h"
 
 #include <zlib.h> // Should come before including tinyexr.
 

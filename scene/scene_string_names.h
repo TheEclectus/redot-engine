@@ -2,8 +2,8 @@
 /*  scene_string_names.h                                                  */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -144,6 +144,8 @@ public:
 	StringName theme_changed;
 	StringName shader_overrides_group;
 	StringName shader_overrides_group_active;
+
+	StringName _custom_type_script;
 
 	StringName pressed;
 	StringName id_pressed;

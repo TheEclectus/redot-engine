@@ -2,8 +2,8 @@
 /*  nav_obstacle.h                                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -94,7 +94,7 @@ public:
 	bool is_map_changed();
 
 	void set_avoidance_layers(uint32_t p_layers);
-	uint32_t get_avoidance_layers() const { return avoidance_layers; };
+	uint32_t get_avoidance_layers() const { return avoidance_layers; }
 
 	void set_paused(bool p_paused);
 	bool get_paused() const;

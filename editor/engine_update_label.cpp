@@ -2,8 +2,8 @@
 /*  engine_update_label.cpp                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -49,7 +49,7 @@ bool EngineUpdateLabel::_can_check_updates() const {
 void EngineUpdateLabel::_check_update() {
 	checked_update = true;
 	_set_status(UpdateStatus::BUSY);
-	http->request("https://godotengine.org/versions.json");
+	http->request("https://redotengine.org/versions.json");
 }
 
 void EngineUpdateLabel::_http_request_completed(int p_result, int p_response_code, const PackedStringArray &p_headers, const PackedByteArray &p_body) {
@@ -235,7 +235,7 @@ EngineUpdateLabel::VersionType EngineUpdateLabel::_get_version_type(const String
 		if (index_string.is_empty()) {
 			*r_index = DEV_VERSION;
 		} else {
-			*r_index = index_string.to_int();
+			*r_index = index_string.trim_prefix(".").to_int();
 		}
 	}
 	return type;

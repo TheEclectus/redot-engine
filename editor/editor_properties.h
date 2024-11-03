@@ -2,8 +2,8 @@
 /*  editor_properties.h                                                   */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -630,7 +630,7 @@ class EditorPropertyNodePath : public EditorProperty {
 	bool editing_node = false;
 
 	Vector<StringName> valid_types;
-	void _node_selected(const NodePath &p_path);
+	void _node_selected(const NodePath &p_path, bool p_absolute = true);
 	void _node_assign();
 	Node *get_base_node();
 	void _update_menu();

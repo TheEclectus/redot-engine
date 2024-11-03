@@ -2,8 +2,8 @@
 /*  nav_agent.cpp                                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -310,7 +310,7 @@ void NavAgent::set_avoidance_priority(real_t p_priority) {
 		rvo_agent_2d.avoidance_priority_ = avoidance_priority;
 	}
 	agent_dirty = true;
-};
+}
 
 bool NavAgent::check_dirty() {
 	const bool was_dirty = agent_dirty;

@@ -2,8 +2,8 @@
 /*  scene_tree.cpp                                                        */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -956,11 +956,14 @@ Ref<ArrayMesh> SceneTree::get_debug_contact_mesh() {
 
 void SceneTree::set_pause(bool p_enabled) {
 	ERR_FAIL_COND_MSG(!Thread::is_main_thread(), "Pause can only be set from the main thread.");
+	ERR_FAIL_COND_MSG(suspended, "Pause state cannot be modified while suspended.");
 
 	if (p_enabled == paused) {
 		return;
 	}
+
 	paused = p_enabled;
+
 #ifndef _3D_DISABLED
 	PhysicsServer3D::get_singleton()->set_active(!p_enabled);
 #endif // _3D_DISABLED
@@ -972,6 +975,30 @@ void SceneTree::set_pause(bool p_enabled) {
 
 bool SceneTree::is_paused() const {
 	return paused;
+}
+
+void SceneTree::set_suspend(bool p_enabled) {
+	ERR_FAIL_COND_MSG(!Thread::is_main_thread(), "Suspend can only be set from the main thread.");
+
+	if (p_enabled == suspended) {
+		return;
+	}
+
+	suspended = p_enabled;
+
+	Engine::get_singleton()->set_freeze_time_scale(p_enabled);
+
+#ifndef _3D_DISABLED
+	PhysicsServer3D::get_singleton()->set_active(!p_enabled && !paused);
+#endif // _3D_DISABLED
+	PhysicsServer2D::get_singleton()->set_active(!p_enabled && !paused);
+	if (get_root()) {
+		get_root()->_propagate_suspend_notification(p_enabled);
+	}
+}
+
+bool SceneTree::is_suspended() const {
+	return suspended;
 }
 
 void SceneTree::_process_group(ProcessGroup *p_group, bool p_physics) {
@@ -1297,6 +1324,9 @@ void SceneTree::_call_input_pause(const StringName &p_group, CallInputType p_cal
 				break;
 			case CALL_INPUT_TYPE_UNHANDLED_KEY_INPUT:
 				n->_call_unhandled_key_input(p_input);
+				break;
+			case CALL_INPUT_TYPE_UNHANDLED_PICKING_INPUT:
+				n->_call_unhandled_picking_input(p_input);
 				break;
 		}
 	}

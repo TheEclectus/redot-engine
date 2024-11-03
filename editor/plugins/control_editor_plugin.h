@@ -2,8 +2,8 @@
 /*  control_editor_plugin.h                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -243,7 +243,7 @@ protected:
 	static ControlEditorToolbar *singleton;
 
 public:
-	bool is_anchors_mode_enabled() { return anchors_mode; };
+	bool is_anchors_mode_enabled() { return anchors_mode; }
 
 	static ControlEditorToolbar *get_singleton() { return singleton; }
 

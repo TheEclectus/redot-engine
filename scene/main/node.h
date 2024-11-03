@@ -2,8 +2,8 @@
 /*  node.h                                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -221,6 +221,7 @@ private:
 		bool shortcut_input : 1;
 		bool unhandled_input : 1;
 		bool unhandled_key_input : 1;
+		bool unhandled_picking_input : 1;
 
 		// Physics interpolation can be turned on and off on a per node basis.
 		// This only takes effect when the SceneTree (or project setting) physics interpolation
@@ -302,6 +303,7 @@ private:
 
 	void _set_tree(SceneTree *p_tree);
 	void _propagate_pause_notification(bool p_enable);
+	void _propagate_suspend_notification(bool p_enable);
 
 	_FORCE_INLINE_ bool _can_process(bool p_paused) const;
 	_FORCE_INLINE_ bool _is_enabled() const;
@@ -370,6 +372,7 @@ protected:
 	void _call_shortcut_input(const Ref<InputEvent> &p_event);
 	void _call_unhandled_input(const Ref<InputEvent> &p_event);
 	void _call_unhandled_key_input(const Ref<InputEvent> &p_event);
+	void _call_unhandled_picking_input(const Ref<InputEvent> &p_event);
 
 	void _validate_property(PropertyInfo &p_property) const;
 
@@ -378,6 +381,7 @@ protected:
 	virtual void shortcut_input(const Ref<InputEvent> &p_key_event);
 	virtual void unhandled_input(const Ref<InputEvent> &p_event);
 	virtual void unhandled_key_input(const Ref<InputEvent> &p_key_event);
+	virtual void unhandled_picking_input(const Ref<InputEvent> &p_picking_event);
 
 	GDVIRTUAL1(_process, double)
 	GDVIRTUAL1(_physics_process, double)
@@ -390,6 +394,7 @@ protected:
 	GDVIRTUAL1(_shortcut_input, Ref<InputEvent>)
 	GDVIRTUAL1(_unhandled_input, Ref<InputEvent>)
 	GDVIRTUAL1(_unhandled_key_input, Ref<InputEvent>)
+	GDVIRTUAL1(_unhandled_picking_input, Ref<InputEvent>)
 
 public:
 	enum {
@@ -441,6 +446,8 @@ public:
 		// Editor specific node notifications
 		NOTIFICATION_EDITOR_PRE_SAVE = 9001,
 		NOTIFICATION_EDITOR_POST_SAVE = 9002,
+		NOTIFICATION_SUSPENDED = 9003,
+		NOTIFICATION_UNSUSPENDED = 9004
 	};
 
 	/* NODE/TREE */
@@ -606,6 +613,9 @@ public:
 
 	void set_process_unhandled_key_input(bool p_enable);
 	bool is_processing_unhandled_key_input() const;
+
+	void set_process_unhandled_picking_input(bool p_enable);
+	bool is_processing_unhandled_picking_input() const;
 
 	_FORCE_INLINE_ bool _is_any_processing() const {
 		return data.process || data.process_internal || data.physics_process || data.physics_process_internal;

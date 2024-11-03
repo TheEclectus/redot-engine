@@ -2,8 +2,8 @@
 /*  version.h                                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -67,7 +67,11 @@
 // Describes the full configuration of that Redot version, including the version number,
 // the status (beta, stable, etc.) and potential module-specific features (e.g. mono).
 // Example: "3.1.4.stable.mono"
-#define VERSION_FULL_CONFIG VERSION_NUMBER "." VERSION_STATUS VERSION_MODULE_CONFIG
+#if VERSION_STATUS_VERSION == 0
+#define VERSION_FULL_CONFIG VERSION_NUMBER "." VERSION_STATUS "." VERSION_MODULE_CONFIG
+#else
+#define VERSION_FULL_CONFIG VERSION_NUMBER "." VERSION_STATUS "." _MKSTR(VERSION_STATUS_VERSION) VERSION_MODULE_CONFIG
+#endif
 
 // Similar to VERSION_FULL_CONFIG, but also includes the (potentially custom) VERSION_BUILD
 // description (e.g. official, custom_build, etc.).

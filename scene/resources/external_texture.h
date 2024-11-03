@@ -2,8 +2,8 @@
 /*  external_texture.h                                                    */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -40,9 +40,12 @@ class ExternalTexture : public Texture2D {
 	GDCLASS(ExternalTexture, Texture2D);
 
 private:
-	RID texture;
+	mutable RID texture;
+	mutable bool using_placeholder = false;
 	Size2 size = Size2(256, 256);
 	uint64_t external_buffer = 0;
+
+	void _ensure_created() const;
 
 protected:
 	static void _bind_methods();

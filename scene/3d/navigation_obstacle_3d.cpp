@@ -2,8 +2,8 @@
 /*  navigation_obstacle_3d.cpp                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -121,6 +121,7 @@ void NavigationObstacle3D::_notification(int p_what) {
 #endif // DEBUG_ENABLED
 		} break;
 
+		case NOTIFICATION_SUSPENDED:
 		case NOTIFICATION_PAUSED: {
 			if (!can_process()) {
 				map_before_pause = map_current;
@@ -131,6 +132,13 @@ void NavigationObstacle3D::_notification(int p_what) {
 			}
 			NavigationServer3D::get_singleton()->obstacle_set_paused(obstacle, !can_process());
 		} break;
+
+		case NOTIFICATION_UNSUSPENDED: {
+			if (get_tree()->is_paused()) {
+				break;
+			}
+			[[fallthrough]];
+		}
 
 		case NOTIFICATION_UNPAUSED: {
 			if (!can_process()) {

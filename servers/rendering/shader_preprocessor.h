@@ -2,8 +2,8 @@
 /*  shader_preprocessor.h                                                 */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -193,6 +193,7 @@ private:
 	void process_elif(Tokenizer *p_tokenizer);
 	void process_else(Tokenizer *p_tokenizer);
 	void process_endif(Tokenizer *p_tokenizer);
+	void process_error(Tokenizer *p_tokenizer);
 	void process_if(Tokenizer *p_tokenizer);
 	void process_ifdef(Tokenizer *p_tokenizer);
 	void process_ifndef(Tokenizer *p_tokenizer);

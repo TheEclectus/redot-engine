@@ -2,8 +2,8 @@
 /*  tool_button_editor_plugin.cpp                                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -35,7 +35,7 @@
 #include "scene/gui/button.h"
 
 void EditorInspectorToolButtonPlugin::_update_action_icon(Button *p_action_button, const String &p_action_icon) {
-	p_action_button->set_icon(p_action_button->get_editor_theme_icon(p_action_icon));
+	p_action_button->set_button_icon(p_action_button->get_editor_theme_icon(p_action_icon));
 }
 
 void EditorInspectorToolButtonPlugin::_call_action(const Variant &p_object, const StringName &p_property) {

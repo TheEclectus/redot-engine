@@ -2,8 +2,8 @@
 /*  editor_scene_importer_blend.cpp                                       */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -505,7 +505,7 @@ void EditorFileSystemImportFormatSupportQueryBlend::_browse_install() {
 }
 
 void EditorFileSystemImportFormatSupportQueryBlend::_update_icons() {
-	blender_path_browse->set_icon(blender_path_browse->get_editor_theme_icon(SNAME("FolderBrowse")));
+	blender_path_browse->set_button_icon(blender_path_browse->get_editor_theme_icon(SNAME("FolderBrowse")));
 }
 
 bool EditorFileSystemImportFormatSupportQueryBlend::query() {

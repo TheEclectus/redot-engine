@@ -2,8 +2,8 @@
 /*  shader_create_dialog.cpp                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -76,7 +76,7 @@ void ShaderCreateDialog::_notification(int p_what) {
 				}
 			}
 
-			path_button->set_icon(get_editor_theme_icon(SNAME("Folder")));
+			path_button->set_button_icon(get_editor_theme_icon(SNAME("Folder")));
 		} break;
 	}
 }

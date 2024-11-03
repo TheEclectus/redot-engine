@@ -2,8 +2,8 @@
 /*  material_editor_plugin.cpp                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -79,11 +79,11 @@ void MaterialEditor::_update_theme_item_cache() {
 void MaterialEditor::_notification(int p_what) {
 	switch (p_what) {
 		case NOTIFICATION_THEME_CHANGED: {
-			light_1_switch->set_icon(theme_cache.light_1_icon);
-			light_2_switch->set_icon(theme_cache.light_2_icon);
+			light_1_switch->set_button_icon(theme_cache.light_1_icon);
+			light_2_switch->set_button_icon(theme_cache.light_2_icon);
 
-			sphere_switch->set_icon(theme_cache.sphere_icon);
-			box_switch->set_icon(theme_cache.box_icon);
+			sphere_switch->set_button_icon(theme_cache.sphere_icon);
+			box_switch->set_button_icon(theme_cache.box_icon);
 
 			error_label->add_theme_color_override(SceneStringName(font_color), get_theme_color(SNAME("error_color"), EditorStringName(Editor)));
 		} break;

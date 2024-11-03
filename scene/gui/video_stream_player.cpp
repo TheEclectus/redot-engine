@@ -2,8 +2,8 @@
 /*  video_stream_player.cpp                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -180,6 +180,7 @@ void VideoStreamPlayer::_notification(int p_notification) {
 			draw_texture_rect(texture, Rect2(Point2(), s), false);
 		} break;
 
+		case NOTIFICATION_SUSPENDED:
 		case NOTIFICATION_PAUSED: {
 			if (is_playing() && !is_paused()) {
 				paused_from_tree = true;
@@ -190,6 +191,13 @@ void VideoStreamPlayer::_notification(int p_notification) {
 				last_audio_time = 0;
 			}
 		} break;
+
+		case NOTIFICATION_UNSUSPENDED: {
+			if (get_tree()->is_paused()) {
+				break;
+			}
+			[[fallthrough]];
+		}
 
 		case NOTIFICATION_UNPAUSED: {
 			if (paused_from_tree) {

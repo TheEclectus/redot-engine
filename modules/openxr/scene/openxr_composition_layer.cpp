@@ -2,8 +2,8 @@
 /*  openxr_composition_layer.cpp                                          */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -57,6 +57,10 @@ OpenXRCompositionLayer::OpenXRCompositionLayer(XrCompositionLayerBaseHeader *p_c
 
 	openxr_api = OpenXRAPI::get_singleton();
 	composition_layer_extension = OpenXRCompositionLayerExtension::get_singleton();
+
+	if (openxr_api) {
+		openxr_session_running = openxr_api->is_running();
+	}
 
 	Ref<OpenXRInterface> openxr_interface = XRServer::get_singleton()->find_interface("OpenXR");
 	if (openxr_interface.is_valid()) {

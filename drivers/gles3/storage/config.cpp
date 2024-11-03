@@ -2,8 +2,8 @@
 /*  config.cpp                                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -233,6 +233,13 @@ Config::Config() {
 	} else if (rendering_device_name == "PowerVR Rogue GE8320") {
 		disable_transform_feedback_shader_cache = true;
 	}
+
+	if (OS::get_singleton()->get_current_rendering_driver_name() == "opengl3_angle") {
+		polyfill_half2float = false;
+	}
+#ifdef WEB_ENABLED
+	polyfill_half2float = false;
+#endif
 }
 
 Config::~Config() {

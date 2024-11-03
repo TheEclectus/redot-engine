@@ -2,8 +2,8 @@
 /*  resource_format_text.cpp                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1433,8 +1433,8 @@ void ResourceFormatLoaderText::get_recognized_extensions_for_type(const String &
 		p_extensions->push_back("tscn");
 	}
 
-	// Don't allow .tres for PackedScenes.
-	if (p_type != "PackedScene") {
+	// Don't allow .tres for PackedScenes or GDExtension.
+	if (p_type != "PackedScene" && p_type != "GDExtension") {
 		p_extensions->push_back("tres");
 	}
 }

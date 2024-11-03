@@ -2,8 +2,8 @@
 /*  gdscript_parser.cpp                                                   */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -246,7 +246,7 @@ void GDScriptParser::apply_pending_warnings() {
 
 	pending_warnings.clear();
 }
-#endif
+#endif // DEBUG_ENABLED
 
 void GDScriptParser::override_completion_context(const Node *p_for_node, CompletionType p_type, Node *p_node, int p_argument) {
 	if (!for_completion) {
@@ -1626,15 +1626,17 @@ GDScriptParser::AnnotationNode *GDScriptParser::parse_annotation(uint32_t p_vali
 		valid = false;
 	}
 
-	annotation->info = &valid_annotations[annotation->name];
+	if (valid) {
+		annotation->info = &valid_annotations[annotation->name];
 
-	if (!annotation->applies_to(p_valid_targets)) {
-		if (annotation->applies_to(AnnotationInfo::SCRIPT)) {
-			push_error(vformat(R"(Annotation "%s" must be at the top of the script, before "extends" and "class_name".)", annotation->name));
-		} else {
-			push_error(vformat(R"(Annotation "%s" is not allowed in this level.)", annotation->name));
+		if (!annotation->applies_to(p_valid_targets)) {
+			if (annotation->applies_to(AnnotationInfo::SCRIPT)) {
+				push_error(vformat(R"(Annotation "%s" must be at the top of the script, before "extends" and "class_name".)", annotation->name));
+			} else {
+				push_error(vformat(R"(Annotation "%s" is not allowed in this level.)", annotation->name));
+			}
+			valid = false;
 		}
-		valid = false;
 	}
 
 	if (check(GDScriptTokenizer::Token::PARENTHESIS_OPEN)) {

@@ -2,8 +2,8 @@
 /*  renderer_compositor.h                                                 */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -108,7 +108,7 @@ public:
 	virtual double get_total_time() const = 0;
 	virtual bool can_create_resources_async() const = 0;
 
-	static bool is_low_end() { return low_end; };
+	static bool is_low_end() { return low_end; }
 	virtual bool is_xr_enabled() const;
 
 	static RendererCompositor *get_singleton() { return singleton; }

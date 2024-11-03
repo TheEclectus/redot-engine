@@ -2,8 +2,8 @@
 /*  gpu_particles_collision_sdf_editor_plugin.cpp                         */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -183,7 +183,7 @@ GPUParticlesCollisionSDF3DEditorPlugin::GPUParticlesCollisionSDF3DEditorPlugin()
 	bake_hb->hide();
 	bake = memnew(Button);
 	bake->set_theme_type_variation("FlatButton");
-	bake->set_icon(EditorNode::get_singleton()->get_editor_theme()->get_icon(SNAME("Bake"), EditorStringName(EditorIcons)));
+	bake->set_button_icon(EditorNode::get_singleton()->get_editor_theme()->get_icon(SNAME("Bake"), EditorStringName(EditorIcons)));
 	bake->set_text(TTR("Bake SDF"));
 	bake->connect(SceneStringName(pressed), callable_mp(this, &GPUParticlesCollisionSDF3DEditorPlugin::_bake));
 	bake_hb->add_child(bake);

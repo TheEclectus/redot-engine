@@ -2,8 +2,8 @@
 /*  variant.h                                                             */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -854,6 +854,19 @@ struct VariantComparator {
 
 struct StringLikeVariantComparator {
 	static bool compare(const Variant &p_lhs, const Variant &p_rhs);
+};
+
+struct StringLikeVariantOrder {
+	static _ALWAYS_INLINE_ bool compare(const Variant &p_lhs, const Variant &p_rhs) {
+		if (p_lhs.is_string() && p_rhs.is_string()) {
+			return p_lhs.operator String() < p_rhs.operator String();
+		}
+		return p_lhs < p_rhs;
+	}
+
+	_ALWAYS_INLINE_ bool operator()(const Variant &p_lhs, const Variant &p_rhs) const {
+		return compare(p_lhs, p_rhs);
+	}
 };
 
 Variant::ObjData &Variant::_get_obj() {

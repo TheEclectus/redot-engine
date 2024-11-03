@@ -2,8 +2,8 @@
 /*  window_wrapper.h                                                      */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -90,7 +90,6 @@ class ScreenSelect : public Button {
 	GDCLASS(ScreenSelect, Button);
 
 	Popup *popup = nullptr;
-	Panel *popup_background = nullptr;
 	HBoxContainer *screen_list = nullptr;
 
 	void _build_advanced_menu();

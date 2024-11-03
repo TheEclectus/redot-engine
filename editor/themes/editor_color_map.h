@@ -2,8 +2,8 @@
 /*  editor_color_map.h                                                    */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -52,8 +52,8 @@ public:
 	static void add_conversion_color_pair(const String &p_from_color, const String &p_to_color);
 	static void add_conversion_exception(const StringName &p_icon_name);
 
-	static HashMap<Color, Color> &get_color_conversion_map() { return color_conversion_map; };
-	static HashSet<StringName> &get_color_conversion_exceptions() { return color_conversion_exceptions; };
+	static HashMap<Color, Color> &get_color_conversion_map() { return color_conversion_map; }
+	static HashSet<StringName> &get_color_conversion_exceptions() { return color_conversion_exceptions; }
 
 	static void create();
 	static void finish();

@@ -2,8 +2,8 @@
 /*  editor_main_screen.h                                                  */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -49,6 +49,7 @@ public:
 		EDITOR_2D = 0,
 		EDITOR_3D,
 		EDITOR_SCRIPT,
+		EDITOR_GAME,
 		EDITOR_ASSETLIB,
 	};
 

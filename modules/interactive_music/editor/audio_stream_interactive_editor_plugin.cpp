@@ -2,8 +2,8 @@
 /*  audio_stream_interactive_editor_plugin.cpp                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -398,7 +398,7 @@ void EditorInspectorPluginAudioStreamInteractive::_edit(Object *p_object) {
 void EditorInspectorPluginAudioStreamInteractive::parse_end(Object *p_object) {
 	if (Object::cast_to<AudioStreamInteractive>(p_object)) {
 		Button *button = EditorInspector::create_inspector_action_button(TTR("Edit Transitions"));
-		button->set_icon(audio_stream_interactive_transition_editor->get_editor_theme_icon(SNAME("Blend")));
+		button->set_button_icon(audio_stream_interactive_transition_editor->get_editor_theme_icon(SNAME("Blend")));
 		button->connect(SceneStringName(pressed), callable_mp(this, &EditorInspectorPluginAudioStreamInteractive::_edit).bind(p_object));
 		add_custom_control(button);
 	}

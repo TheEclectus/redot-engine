@@ -2,8 +2,8 @@
 /*  gdscript_editor.cpp                                                   */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -3166,7 +3166,9 @@ static void _find_call_arguments(GDScriptParser::CompletionContext &p_context, c
 	HashMap<String, ScriptLanguage::CodeCompletionOption> options;
 
 	GDScriptParser::CompletionContext completion_context = parser.get_completion_context();
-	completion_context.base = p_owner;
+	if (completion_context.current_class != nullptr && completion_context.current_class->outer == nullptr) {
+		completion_context.base = p_owner;
+	}
 	bool is_function = false;
 
 	switch (completion_context.type) {
@@ -3536,13 +3538,13 @@ static void _find_call_arguments(GDScriptParser::CompletionContext &p_context, c
 	return OK;
 }
 
-#else
+#else // !TOOLS_ENABLED
 
 Error GDScriptLanguage::complete_code(const String &p_code, const String &p_path, Object *p_owner, List<ScriptLanguage::CodeCompletionOption> *r_options, bool &r_forced, String &r_call_hint) {
 	return OK;
 }
 
-#endif
+#endif // TOOLS_ENABLED
 
 //////// END COMPLETION //////////
 
@@ -4127,4 +4129,4 @@ static Error _lookup_symbol_from_base(const GDScriptParser::DataType &p_base, co
 	return ERR_CANT_RESOLVE;
 }
 
-#endif
+#endif // TOOLS_ENABLED

@@ -2,8 +2,8 @@
 /*  variant_utility.cpp                                                   */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -1673,7 +1673,7 @@ static void register_utility_function(const String &p_name, const Vector<String>
 	bfi.argnames = argnames;
 	bfi.argcount = T::get_argument_count();
 	if (!bfi.is_vararg) {
-		ERR_FAIL_COND_MSG(argnames.size() != bfi.argcount, "wrong number of arguments binding utility function: " + name);
+		ERR_FAIL_COND_MSG(argnames.size() != bfi.argcount, vformat("Wrong number of arguments binding utility function: '%s'.", name));
 	}
 	bfi.get_arg_type = T::get_argument_type;
 	bfi.return_type = T::get_return_type();

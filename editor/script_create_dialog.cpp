@@ -2,8 +2,8 @@
 /*  script_create_dialog.cpp                                              */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -137,9 +137,9 @@ void ScriptCreateDialog::_notification(int p_what) {
 				}
 			}
 
-			path_button->set_icon(get_editor_theme_icon(SNAME("Folder")));
-			parent_browse_button->set_icon(get_editor_theme_icon(SNAME("Folder")));
-			parent_search_button->set_icon(get_editor_theme_icon(SNAME("ClassList")));
+			path_button->set_button_icon(get_editor_theme_icon(SNAME("Folder")));
+			parent_browse_button->set_button_icon(get_editor_theme_icon(SNAME("Folder")));
+			parent_search_button->set_button_icon(get_editor_theme_icon(SNAME("ClassList")));
 		} break;
 	}
 }

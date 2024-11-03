@@ -2,8 +2,8 @@
 /*  script_editor_plugin.h                                                */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -120,6 +120,24 @@ public:
 	virtual Ref<EditorSyntaxHighlighter> _create() const override;
 
 	EditorJSONSyntaxHighlighter() { highlighter.instantiate(); }
+};
+
+class EditorMarkdownSyntaxHighlighter : public EditorSyntaxHighlighter {
+	GDCLASS(EditorMarkdownSyntaxHighlighter, EditorSyntaxHighlighter)
+
+private:
+	Ref<CodeHighlighter> highlighter;
+
+public:
+	virtual void _update_cache() override;
+	virtual Dictionary _get_line_syntax_highlighting_impl(int p_line) override { return highlighter->get_line_syntax_highlighting(p_line); }
+
+	virtual PackedStringArray _get_supported_languages() const override { return PackedStringArray{ "md", "markdown" }; }
+	virtual String _get_name() const override { return TTR("Markdown"); }
+
+	virtual Ref<EditorSyntaxHighlighter> _create() const override;
+
+	EditorMarkdownSyntaxHighlighter() { highlighter.instantiate(); }
 };
 
 ///////////////////////////////////////////////////////////////////////////////

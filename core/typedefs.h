@@ -2,8 +2,8 @@
 /*  typedefs.h                                                            */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -316,5 +316,7 @@ struct BuildIndexSequence<0, Is...> : IndexSequence<Is...> {};
 #define ____gd_is_defined(arg1_or_junk) __gd_take_second_arg(arg1_or_junk true, false)
 #define ___gd_is_defined(val) ____gd_is_defined(__GDARG_PLACEHOLDER_##val)
 #define GD_IS_DEFINED(x) ___gd_is_defined(x)
+
+#define FORCE_SEMICOLON ;
 
 #endif // TYPEDEFS_H

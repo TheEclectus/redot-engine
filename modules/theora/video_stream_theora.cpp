@@ -2,8 +2,8 @@
 /*  video_stream_theora.cpp                                               */
 /**************************************************************************/
 /*                         This file is part of:                          */
-/*                             GODOT ENGINE                               */
-/*                        https://godotengine.org                         */
+/*                             REDOT ENGINE                               */
+/*                        https://redotengine.org                         */
 /**************************************************************************/
 /* Copyright (c) 2024-present Redot Engine contributors                   */
 /*                                          (see REDOT_AUTHORS.md)        */
@@ -33,6 +33,7 @@
 #include "video_stream_theora.h"
 
 #include "core/config/project_settings.h"
+#include "core/io/image.h"
 #include "core/os/os.h"
 #include "scene/resources/image_texture.h"
 
@@ -646,7 +647,7 @@ VideoStreamPlaybackTheora::~VideoStreamPlaybackTheora() {
 	memdelete(thread_sem);
 #endif
 	clear();
-};
+}
 
 void VideoStreamTheora::_bind_methods() {}
 
