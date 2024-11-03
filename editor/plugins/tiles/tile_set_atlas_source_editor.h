@@ -34,11 +34,13 @@
 #define TILE_SET_ATLAS_SOURCE_EDITOR_H
 
 #include "tile_atlas_view.h"
+#include "tile_collision_copy_dialog.h"
 #include "tile_data_editors.h"
 
 #include "scene/gui/split_container.h"
 #include "scene/resources/2d/tile_set.h"
 
+class ConfirmationDialog;
 class Popup;
 class TileSet;
 class Tree;
@@ -143,6 +145,8 @@ private:
 	void _tile_data_editor_dropdown_button_draw();
 	void _tile_data_editor_dropdown_button_pressed();
 
+	TileCollisionCopyDialog *tile_data_transform_popup = nullptr;
+
 	// -- Tile data editors --
 	String current_property;
 	Control *current_tile_data_editor_toolbar = nullptr;
@@ -209,6 +213,8 @@ private:
 		ADVANCED_AUTO_CREATE_TILES,
 		ADVANCED_AUTO_REMOVE_TILES,
 		ADVANCED_CLEANUP_TILES,
+
+		ADVANCED_COPY_TILE_POLYGONS,
 	};
 	Vector2i menu_option_coords;
 	int menu_option_alternative = TileSetSource::INVALID_TILE_ALTERNATIVE;
@@ -227,6 +233,7 @@ private:
 	Button *tools_settings_erase_button = nullptr;
 	MenuButton *tool_advanced_menu_button = nullptr;
 	TextureRect *outside_tiles_warning = nullptr;
+	MenuButton *tool_layer_transforms_menu_button = nullptr;
 
 	// Selection.
 	RBSet<TileSelection> selection;

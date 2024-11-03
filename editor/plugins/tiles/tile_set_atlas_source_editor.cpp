@@ -1032,18 +1032,22 @@ void TileSetAtlasSourceEditor::_update_toolbar() {
 		}
 		tools_settings_erase_button->show();
 		tool_advanced_menu_button->show();
+		tool_layer_transforms_menu_button->hide();
 	} else if (tools_button_group->get_pressed_button() == tool_select_button) {
 		if (current_tile_data_editor_toolbar) {
 			current_tile_data_editor_toolbar->hide();
 		}
 		tools_settings_erase_button->hide();
 		tool_advanced_menu_button->hide();
+		tool_layer_transforms_menu_button->hide();
+
 	} else if (tools_button_group->get_pressed_button() == tool_paint_button) {
 		if (current_tile_data_editor_toolbar) {
 			current_tile_data_editor_toolbar->show();
 		}
 		tools_settings_erase_button->hide();
 		tool_advanced_menu_button->hide();
+		tool_layer_transforms_menu_button->show();
 	}
 }
 
@@ -1695,6 +1699,12 @@ void TileSetAtlasSourceEditor::_menu_option(int p_option) {
 		} break;
 		case ADVANCED_CLEANUP_TILES: {
 			_cleanup_outside_tiles();
+		} break;
+
+		case ADVANCED_COPY_TILE_POLYGONS: {
+			print_line_rich("[b][color=red]TADA![/color][/b] There might be functionality here soon.");
+			tile_data_transform_popup->edit(tile_set);
+			tile_data_transform_popup->popup_centered({ 300, 400 });
 		} break;
 	}
 }
@@ -2450,6 +2460,7 @@ void TileSetAtlasSourceEditor::_notification(int p_what) {
 			tools_settings_erase_button->set_icon(get_editor_theme_icon(SNAME("Eraser")));
 			tool_advanced_menu_button->set_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
 			outside_tiles_warning->set_texture(get_editor_theme_icon(SNAME("StatusWarning")));
+			tool_layer_transforms_menu_button->set_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
 
 			resize_handle = get_editor_theme_icon(SNAME("EditorHandle"));
 			resize_handle_disabled = get_editor_theme_icon(SNAME("EditorHandleDisabled"));
@@ -2602,6 +2613,12 @@ TileSetAtlasSourceEditor::TileSetAtlasSourceEditor() {
 	tile_data_editors_tree->connect(SceneStringName(item_selected), callable_mp(this, &TileSetAtlasSourceEditor::_tile_data_editors_tree_selected));
 	tile_data_editors_popup->add_child(tile_data_editors_tree);
 
+	tile_data_transform_popup = memnew(TileCollisionCopyDialog);
+	tile_data_transform_popup->set_title(TTR("Select layers"));
+	tile_data_transform_popup->set_min_size({ 200, 300 });
+	//tile_data_transform_popup->set_flag(Window::Flags::FLAG_BORDERLESS, false);
+	add_child(tile_data_transform_popup);
+
 	tile_data_painting_editor_container = memnew(VBoxContainer);
 	tile_data_painting_editor_container->set_h_size_flags(SIZE_EXPAND_FILL);
 	tile_data_editors_vbox->add_child(tile_data_painting_editor_container);
@@ -2648,6 +2665,13 @@ TileSetAtlasSourceEditor::TileSetAtlasSourceEditor() {
 	outside_tiles_warning->set_tooltip_text(vformat(TTR("The current atlas source has tiles outside the texture.\nYou can clear it using \"%s\" option in the 3 dots menu."), TTR("Remove Tiles Outside the Texture")));
 	outside_tiles_warning->hide();
 	tool_settings->add_child(outside_tiles_warning);
+
+	tool_layer_transforms_menu_button = memnew(MenuButton);
+	tool_layer_transforms_menu_button->set_flat(false);
+	tool_layer_transforms_menu_button->set_theme_type_variation("FlatMenuButton");
+	tool_layer_transforms_menu_button->get_popup()->add_item(TTR("Copy Collisions To..."), ADVANCED_COPY_TILE_POLYGONS);
+	tool_layer_transforms_menu_button->get_popup()->connect(SceneStringName(id_pressed), callable_mp(this, &TileSetAtlasSourceEditor::_menu_option));
+	tool_settings->add_child(tool_layer_transforms_menu_button);
 
 	_update_toolbar();
 	_update_buttons();
