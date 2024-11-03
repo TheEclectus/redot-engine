@@ -2460,7 +2460,7 @@ void TileSetAtlasSourceEditor::_notification(int p_what) {
 			tools_settings_erase_button->set_button_icon(get_editor_theme_icon(SNAME("Eraser")));
 			tool_advanced_menu_button->set_button_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
 			outside_tiles_warning->set_texture(get_editor_theme_icon(SNAME("StatusWarning")));
-			tool_layer_transforms_menu_button->set_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
+			tool_layer_transforms_menu_button->set_button_icon(get_editor_theme_icon(SNAME("GuiTabMenuHl")));
 
 			resize_handle = get_editor_theme_icon(SNAME("EditorHandle"));
 			resize_handle_disabled = get_editor_theme_icon(SNAME("EditorHandleDisabled"));
